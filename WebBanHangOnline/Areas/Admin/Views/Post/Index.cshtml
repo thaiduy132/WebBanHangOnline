@@ -1,6 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.EF.News>
+﻿@model IEnumerable<WebBanHangOnline.Models.EF.Posts>
 @{
-    ViewBag.Title = "Danh sách tin tức";
+    ViewBag.Title = "Bài viết ";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/news" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/category" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 
@@ -26,7 +26,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý sách danh mục</h1>
+                <h1>Quản lý danh sách bài viết</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -47,7 +47,7 @@
             <h3 class="card-title">Danh sách danh mục</h3>
 
             <div class="card-tools">
-                <a href="/admin/news/add" class="btn btn-primary">Thêm mới</a>
+                <a href="/admin/post/add" class="btn btn-primary">Thêm mới</a>
                 <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa đã chọn</a>
 
             </div>
@@ -88,7 +88,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/admin/news/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="/admin/post/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
 
                                 </td>
@@ -146,7 +146,7 @@
                         var conf = confirm('Bạn có muốn xóa các bản ghi này không ?');
                         if (conf === true) {
                             $.ajax({
-                                url: '/admin/news/deleteAll',
+                                url: '/admin/post/deleteAll',
                                 type: 'POST',
                                 data: { ids: str },
                                 success: function (rs) {
@@ -177,7 +177,7 @@
                 var isConfirm = confirm("Bạn có muốn xóa bản ghi này không ?");
                 if (isConfirm == true) {
                     $.ajax({
-                        url: '/admin/news/delete',
+                        url: '/admin/post/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (result) {
@@ -194,7 +194,7 @@
                 var btn = $(this);
                 var id = $(this).data("id");
                     $.ajax({
-                        url: '/admin/news/IsActive',
+                        url: '/admin/post/IsActive',
                         type: 'POST',
                         data: { id: id },
                         success: function (result) {

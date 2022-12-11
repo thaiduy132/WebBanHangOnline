@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebBanHangOnline.Models.EF
 {
-    [Table("tb_Post")]
+    [Table("tb_Posts")]
     public class Posts : CommonAbstract
     {
         [Key]
@@ -26,6 +26,8 @@ namespace WebBanHangOnline.Models.EF
         public int SeoTitle { get; set; }
         public int SeoDescription { get; set; }
         public int SeoKeywords { get; set; }
+
+        public bool IsActive { get; set; }
         public virtual Category Category { get; set; }
 
     }
