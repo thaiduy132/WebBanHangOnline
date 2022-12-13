@@ -1,8 +1,8 @@
-﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.News>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.EF.Product>
 @using PagedList.Mvc;
 @using PagedList;
 @{
-    ViewBag.Title = "Danh sách tin tức";
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý sách danh mục</h1>
+                <h1>Quản lý sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -46,100 +46,107 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách danh mục</h3>
+            <h3 class="card-title">Danh sách sản phẩm</h3>
 
             <div class="card-tools">
-                <a href="/admin/news/add" class="btn btn-primary">Thêm mới</a>
+                <a href="/admin/products/add" class="btn btn-primary">Thêm mới</a>
                 <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa đã chọn</a>
 
             </div>
         </div>
         <div class="card-body">
-              <div class="row">
-                  <div class="col-4">
-                      @using (Html.BeginForm("Index", "News", FormMethod.Get, new { }))
-                      {
-                          <div class="input-group input-group-sm">
-                              @Html.TextBox("Searchtext")
-                             
-                              <span class="input-group-append">
-                                  <button type="submit" class="btn btn-info btn-flat btnSearch">Tìm kiếm</button>
-                              </span>
-                          </div>
-                      }
-
-
-                   
-                  </div>
-              </div>
-
-            </div>
-            <table class="table table-hover">
-                <thead>
-                <th><input type="checkbox" id="SelectAll" /></th>
-                <th>STT</th>
-                <th>Hình ảnh</th>
-                <th>Tiêu đề</th>
-                <th>
-                    Ngày tạo
-                </th>
-                <th class="text-center">Trạng thái</th>
-
-                <th>Chức năng</th>
-                <th></th>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
+            @*<div class="row">
+                <div class="col-4">
+                    @using (html.beginform("index", "news", formmethod.get, new { }))
                     {
-                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                        foreach (var item in Model)
-                        {
-                            var strCheck = @item.IsActive ? "<i class='fa fa-check text-success'> </i>" : "<i class='fas fa-times text-danger'> </i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                        <div class="input-group input-group-sm">
+                            @html.textbox("searchtext")
 
-                                <td>@i</td>
-
-                                <td><img src="@item.Image" width="80px" /></td>
-                                <td>@item.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td class="text-center">
-                                    <a href='#' data-id="@item.Id" class="btnActive">
-                                        @Html.Raw(strCheck)
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="/admin/news/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
-
-                                </td>
-
-                            </tr>
-                            i++;
-                        }
-
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat btnsearch">tìm kiếm</button>
+                            </span>
+                        </div>
                     }
-                    else
+
+
+
+                </div>
+            </div>*@
+
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th><input type="checkbox" id="SelectAll" /></th>
+            <th>STT</th>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Danh mục</th>
+
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>
+                Ngày tạo
+            </th>
+            <th class="text-center">Hiển th</th>
+            <th>Chức năng</th>
+            <th></th>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
+                    foreach (var item in Model)
                     {
-                    <td colspan="4">Không có bản ghi nào!!</td>
+                        var strCheck = @item.IsActive ? "<i class='fa fa-check text-success'> </i>" : "<i class='fas fa-times text-danger'> </i>";
+                        <tr id="trow_@item.Id">
+                            <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+
+                            <td>@i</td>
+
+                            <td><img src="@item.Image" width="80px" /></td>
+                            <td>@item.Title</td>
+                            <td>@item.ProductCategory.Title</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price</td>
+
+                            <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                            <td class="text-center">
+                                <a href='#' data-id="@item.Id" class="btnActive">
+                                    @Html.Raw(strCheck)
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/admin/news/edit/@item.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+
+                            </td>
+
+                        </tr>
+                        i++;
+                    }
+
                 }
-                    </tbody>
-                </table>
+                else
+                {
+                <td colspan="4">Không có bản ghi nào!!</td>
+            }
+                </tbody>
+            </table>
 
             <div class="row">
                 <div class="col-5"></div>
                 <div class="col-6">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
-)
+                    )
                 </div>
             </div>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
 
-            </div>
-            <!-- /.card-footer-->
+        </div>
+        <!-- /.card-footer-->
         </div>
         <!-- /.card -->
 

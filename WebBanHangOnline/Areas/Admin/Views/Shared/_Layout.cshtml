@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="~/Content/admin/plugins/dropzone/min/dropzone.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Content/admin/dist/css/adminlte.min.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -347,8 +348,10 @@
         document.querySelector("#actions .cancel").onclick = function () {
             myDropzone.removeAllFiles(true)
         }
-              // DropzoneJS Demo Code End</script>
+                  // DropzoneJS Demo Code End</script>
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/autoNumeric-1.9.45.js"></script>
+
     <script src="~/Content/admin/ckfinder/ckfinder/ckfinder.js"></script>
     <script src="~/Content/admin/ckeditor/ckeditor.js"></script>
 </body>
