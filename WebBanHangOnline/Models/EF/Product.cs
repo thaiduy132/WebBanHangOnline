@@ -11,6 +11,11 @@ namespace WebBanHangOnline.Models.EF
     [Table("tb_Product")]
     public class Product:CommonAbstract
     {
+        public Product()
+        {
+            this.ProductImage = new HashSet<ProductImage>();
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -51,6 +56,11 @@ namespace WebBanHangOnline.Models.EF
 
         public string SeoKeywords { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
+
+        public virtual ICollection<ProductImage> ProductImage { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetails    { get; set; }   
+
 
     }
 }
