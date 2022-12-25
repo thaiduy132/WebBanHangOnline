@@ -1,0 +1,193 @@
+﻿@model IEnumerable <WebBanHangOnline.Models.EF.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        '
+        <div class="container">
+            <div class="sidebar">
+                <div class="sidebar type">
+                    <ul class="tab">
+                        <li class="item"><a href="#">TẤT CẢ</a></li>
+                        <li class="item-divider"></li>
+                        <li class="item"><a href="#">NAM</a></li>
+                        <li class="item-divider"></li>
+                        <li class="item"><a href="#">NỮ</a></li>
+                    </ul>
+                </div>
+                <div class="row-divider"></div>
+                <ul class="sidebar type-item">
+                    <li class="type-item item"><a href="#">Accessories | Phụ kiện</a></li>
+                    <li class="type-item item"><a href="#">Footwear | Lên chân</a></li>
+                    <li class="type-item item"><a href="#">Top | Nửa trên</a></li>
+                </ul>
+                <div class="row-divider"></div>
+                <div class="sidebar tree">
+                    <ul class="nav">
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                TRẠNG THÁI
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                KIỂU DÁNG
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider">
+                        </li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                DÒNG SẢN PHẨM
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                GIÁ
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                BỘ SƯU TẬP
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                TRẠNG THÁI
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                SIZE GIÀY
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                MÀU SẮC
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+                        <li class="nav element">
+                            <label label-default class="tree-toggle nav-header orange">
+                                TRẠNG THÁI
+                            </label>
+                            <span class="icon orange"><i class="fa-solid fa-angle-up"></i></span>
+                            <ul class="nav tree" display="block">
+                                <li>Limited Edition</li>
+                                <li>Online Only</li>
+                                <li>Sale Off</li>
+                                <li>Best Seller</li>
+                                <li>New Arrival</li>
+                            </ul>
+                        </li>
+                        <li class="nav-divider"></li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="product-list">
+                <div class="product-list cover">
+                    <img src="https://ananas.vn/wp-content/uploads/desktop_productlist.jpg" />
+                </div>
+
+                <div class="product-list list">
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="product-list card">
+                                <div class="card-image">
+                                    <img src="@item.Image" alt="">
+                                    <div class="text"><a href="#"> MUA NGAY</a></div>
+                                </div>
+                                <div class="card-descr">
+                                    <h3 class="name">@item.Title</h3>
+                                    <h3 class="color">@item.Price</h3>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="~/Content/client/assests/js/product-list.js"></script>
+
+

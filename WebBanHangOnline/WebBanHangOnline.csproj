@@ -184,10 +184,13 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +207,8 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\Size.cs" />
+    <Compile Include="Models\EF\Stock.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -2998,6 +3003,28 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\client\assests\css\layout.css" />
+    <Content Include="Content\client\assests\img\1.jpg" />
+    <Content Include="Content\client\assests\img\2.jpeg" />
+    <Content Include="Content\client\assests\img\3.jpg" />
+    <Content Include="Content\client\assests\img\Banner_Clothing.jpg" />
+    <Content Include="Content\client\assests\img\catalogy-1.jpg" />
+    <Content Include="Content\client\assests\img\catalogy-2.jpg" />
+    <Content Include="Content\client\assests\img\catalogy-3.jpg" />
+    <Content Include="Content\client\assests\img\fb_aglet.png" />
+    <Content Include="Content\client\assests\img\hc1.jpg" />
+    <Content Include="Content\client\assests\img\hc2.jpg" />
+    <Content Include="Content\client\assests\img\ig_aglet.png" />
+    <Content Include="Content\client\assests\img\shoes1.jpg" />
+    <Content Include="Content\client\assests\img\shoes2.jpg" />
+    <Content Include="Content\client\assests\js\product-list.js" />
+    <Content Include="Content\client\Layout\img\bongda.jpg" />
+    <Content Include="Content\client\Layout\img\bongro.jpg" />
+    <Content Include="Content\client\Layout\img\chaybo.jpg" />
+    <Content Include="Content\client\Layout\img\icon-down.png" />
+    <Content Include="Content\client\Layout\img\logo.png" />
+    <Content Include="Content\client\Layout\img\quanvot.jpg" />
+    <Content Include="Content\client\Layout\img\truck.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -3116,6 +3143,9 @@
     <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3161,11 +3191,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Menu\_MenuTop.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\admin\ckfinder\ckfinder\userfiles\" />
+    <Folder Include="Content\client\assests\html\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -2,30 +2,110 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<style>
+    #footer {
+        margin-top: 1800px;
+    }
+</style>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<body>
+    <div id="home-collection">
+        <div class="row">
+            <div class="col col-half hc1">
+                <img src="~/Content/client/assests/img/hc1.jpg" alt="" class="hc-img img1">
+                <div class="hc-content">
+                    <a href="#">
+                        <h3>ALL BLACK IN BLACK</h3>
+                    </a>
+                    <p>
+                        Mặc dù được ứng dụng rất nhiều, nhưng sắc đen lúc nào cũng toát lên một vẻ huyền bí không nhàm
+                        chán
+                    </p>
+                </div>
+            </div>
+
+            <div class="col col-half hc2">
+                <img src="~/Content/client/assests/img/hc2.jpg" alt="" class="hc-img img1">
+                <div class="hc-content">
+                    <a href="#">
+                        <h3>OUTLET SALE</h3>
+                    </a>
+                    <p>
+                        Danh mục những sản phẩm bán tại "giá tốt hơn" chỉ được bán online - Online only, chúng đã từng
+                        làm mưa làm gió một thời gian và hiện đang rơi vào tình trạng bể size, bể số.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div id="home-menu">
+        <div class="row">
+            <h2>DANH MỤC MUA HÀNG</h2>
+        </div>
+        <div class="row">
+            <div class="col col-third ">
+                <div class="hm-background">
+                    <img src="~/Content/client/assests/img/catalogy-1.jpg" alt="">
+                </div>
+                <div class="hm-items">
+                    <a href="product_list" class="title">GIÀY NAM</a>
+                    <a href="product_list" class="sub">New Arrivals</a>
+                    <a href="product_list" class="sub">Best Seller</a>
+                    <a href="product_list" class="sub">Sale-off</a>
+                </div>
+            </div>
+            <div class="col col-third ">
+                <div class="hm-background">
+                    <img src="~/Content/client/assests/img/catalogy-2.jpg" alt="">
+                </div>
+                <div class="hm-items">
+                    <a href="product_list" class="title">GIÀY NỮ</a>
+                    <a href="product_list" class="sub">New Arrivals</a>
+                    <a href="product_list" class="sub">Best Seller</a>
+                    <a href="product_list" class="sub">Sale-off</a>
+                </div>
+            </div>
+            <div class="col col-third ">
+                <div class="hm-background">
+                    <img src="~/Content/client/assests/img/catalogy-3.jpg" alt="">
+                </div>
+                <div class="hm-items">
+                    <a href="product_list" class="title">DÒNG SẢN PHẨM</a>
+                    <a href="product_list" class="sub">Basas</a>
+                    <a href="product_list" class="sub">Vintas</a>
+                    <a href="product_list" class="sub">Urbas</a>
+                    <a href="product_list" class="sub">Pattas</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div id="bestseller">
+        <div class="row">
+            <h2>BEST SELLER</h2>
+        </div>
     </div>
-</div>
+
+    <div id="banner">
+        <div class="row">
+            <img src="~/Content/client/assests/img/Banner_Clothing.jpg" alt="">
+        </div>
+    </div>
+
+    <div id="social-media">
+        <div class="row">
+            <div class="col col-half hc1">
+                <h2>INSTAGRAM</h2>
+                <a href=#><img src="~/Content/client/assests/img/ig_aglet.png" alt="" class="hc-img"></a>
+            </div>
+            <div class="col col-half hc2">
+                <h2>FACEBOOK</h2>
+                <a href=#><img src="~/Content/client/assests/img/fb_aglet.png" alt="" class="hc-img"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 ﻿@model WebBanHangOnline.Models.EF.Product
 @{
-    ViewBag.Title = "Thêm mới";
+    ViewBag.Title = "Cập nhật sản phẩm ";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,7 +19,7 @@
             <a href="/admin/products" class="nav-link">Sản phẩm</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Thêm mới</a>
+            <a href="#" class="nav-link">Cập nhật</a>
         </li>
     </ul>
 }
@@ -28,12 +28,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Thêm mới sản phẩm</h1>
+                <h1>Cập nhật sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
-                    <li class="breadcrumb-item active">Thêm mới sản phẩm</li>
+                    <li class="breadcrumb-item active">Cập nhật sản phẩm</li>
                 </ol>
             </div>
         </div>
@@ -46,7 +46,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Thông tin thêm mới sản phẩm</h3>
+            <h3 class="card-title">Thông tin cập nhật sản phẩm</h3>
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -62,15 +62,17 @@
                 <div class="col-md-12">
 
 
-                    @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { }))
+                    @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
+                        @Html.HiddenFor(x=>x.Id)
+                        @Html.HiddenFor(x=>x.CreatedDate)
                         <div class="card">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Thông tin chung</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình ảnh</a></li>
+                                    @*<li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Hình ảnh</a></li>*@
                                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">SEO</a></li>
                                 </ul>
                             </div><!-- /.card-header -->
@@ -108,7 +110,6 @@
                                             @Html.ValidationMessageFor(x => x.Detail, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="row">
-
                                             <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Số lượng</label>
@@ -119,14 +120,14 @@
                                             <div class="col-3">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá</label>
-                                                    <input type="text" name="priceField" class="form-control PriceClass" id="priceField" value="" data-type="currency" placeholder="Giá" />
+                                                    <input type="text" name="priceField" class="form-control PriceClass" id="priceField" value="@Model.Price" data-type="currency" placeholder="Giá" />
                                                     @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Giá" })
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá khuyến mãi</label>
-                                                    <input type="text" name="pricesaleField" class="form-control PriceClass" id="pricesalefield" value="" data-type="currency" placeholder="Giá" />
+                                                    <input type="text" name="pricesaleField" class="form-control PriceClass" id="pricesalefield" value="@Model.PriceSale" data-type="currency" placeholder="Giá" />
                                                     @Html.HiddenFor(x => x.PriceSale, new { @class = "", @placeholder = "Giá khuyến mãi" })
 
                                                 </div>
@@ -175,40 +176,16 @@
 
                                     </div>
                                     <!-- /.tab-pane -->
-                                    <div class="tab-pane" id="timeline">
-                                        <div class="row">
-                                            <div class="col-md-12 text-right" style="margin-bottom : 4px;">
-                                                <input type="button" class="btn btn-success" id="iTaiAnh" onclick="BrowseServer();" value="Tải ảnh"/>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <table class="table table-hover" id="tbAnhSanPham">
-                                                    <thead>
-                                                        <tr>
-                                                        <th >#</th>
-                                                        <th class="text-center">Ảnh</th>
-                                                        <th class="text-center">Ảnh đại diện</th>
-                                                        <th class="text-center">Chức năng</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbHtml">
-                                                       
-                                                    </tbody>
-                                                </table>
-                                                <input type="hidden" id="tCurrentId" value="0"/>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                    <!-- /.tab-pane -->
+
 
                                     <div class="tab-pane" id="settings">
                                         <form class="form-horizontal">
                                             <div class="form-group row">
                                                 <label for="inputName" class="col-sm-2 col-form-label">SEO Title</label>
                                                 <div class="col-sm-10">
-                                                    @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @placeholder = "Seo Title",})
+                                                    @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @placeholder = "Seo Title", })
                                                     @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
-                                                    
+
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -225,7 +202,7 @@
                                                     @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                         
+
                                         </form>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -234,10 +211,11 @@
                             </div><!-- /.card-body -->
                             <div class="form-group">
 
-                                <button type="submit" class="btn btn-success">Thêm mới</button>
+                                <button type="submit" class="btn btn-success">Lưu lại</button>
+                                <a class="btn btn-danger" href="/admin/products/index">Quay lại</a>
                             </div>
                         </div>
-                        
+
 
                     }
                 </div>
@@ -263,64 +241,7 @@
                 extraAllowedContent: 'span',
             });
         });
-        function BrowseServer(field) {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-                addImageProduct(fileUrl);
-            }
-            finder.popup();
-        }
-        function addImageProduct(url) {
-            var temp = $('#tCurrentId').val();
-            var currentId = parseInt(temp) + 1;
-            var str = "";
-            if (currentId == 1) {
-                str += `
-                <tr id="trow_${currentId}">
-                   <td>${currentId}</td>
-                   <td class="text-center">
-                       <img width="80" src="${url} "/><input type='hidden' value="${url}" name="Images" />
-                   </td>
-                   <td class="text-center"><input type="radio" name="rDefault" value="${currentId}"  checked="checked"/></td>
-                   <td class="text-center"><a href="#" class="btn btn-sm btn-danger btnXoaAnh" data-id="${currentId}">Xóa</a></td>
-                </tr>
-                `
-            } else {
-                str += `
-                <tr id="trow_${currentId}">
-                   <td>${currentId}</td>
-                   <td class="text-center">
-                       <img width="80" src="${url}"/><input type='hidden' value="${url}" name="Images" />
-                   </td>
-                   <td class="text-center"><input type="radio" name="rDefault" value="${currentId}"/></td>
-                   <td class="text-center"><a href="#" class="btn btn-sm btn-danger btnXoaAnh" data-id="${currentId}">Xóa</a></td>
-                </tr>
-                `
-            }
-           
-            $('#tbHtml').append(str);
-            $('#tCurrentId').val(currentId);
-            $('#tbHtml tr td a').each(function () {
-                $(this).click(function () {
-                    var conf = confirm('Bạn có muốn xóa ảnh này không ?');
-                    if (conf === true) {
-                        var _id = $(this).data('id');
-                        ////$('#trow_' + _id).fadeTo('fast', function () {
-                        ////    $(this).slideUp('fast', function () {
-                        ////        $(this).remove();
-                        ////    };
-                        //})
-                        $('#trow_' + _id).remove();
-                        var temp = $('#tCurrentId').val();
-                        var currentId = parseInt(temp) - 1;
-                        $('#tCurrentId').val(currentId);
-                    }
 
-
-                })
-            })
-
-        }
         // Jquery Dependency
 
         $("input[data-type='currency']").on({
@@ -345,7 +266,7 @@
 
             // get input value
             console.log(input.val());
-            
+
 
             /*console.log(getPriceHtml);*/
             var input_val = input.val();
@@ -357,7 +278,7 @@
             // original length
             var original_len = input_val.length;
 
-            // initial caret position 
+            // initial caret position
             var caret_pos = input.prop("selectionStart");
 
             // check for decimal

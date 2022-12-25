@@ -1,44 +1,285 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <link rel="stylesheet" href="~/Content/client/assests/css/layout.css">
+    <link rel="stylesheet" href="~/Content/client/assests/css/layout.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/d822126298.js" crossorigin="anonymous"></script>
+
+    <title>Document</title> 
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+    <nav>
+        <div class="header">
+            <ul class="menu">
+                <li><a href="http://localhost/Aglet/order_tracker"><i class="fa-sharp fa-solid fa-truck-fast"> </i>Tra cứu đơn hàng</a> </li>
+                <li><a href="#"><i class="fa-solid fa-location-dot"></i> Tìm cửa hàng </a> </li>
+                <li><a href="#"><i class="fa-solid fa-heart"></i> Yêu thích</a> </li>
+                <li><a href="http://localhost/Aglet/login"> <i class="fa-solid fa-user"></i> Đăng nhập</a> </li>
+                <li><a href="http://localhost/Aglet/cart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</a> </li>
+            </ul>
+            <div class="my-navbar">
+                <div class="my-navbar-logo" title="Aglet Home">
+                    <a href="home"><img src="~/Content/client/Layout/img/logo.png" alt="logo"></a>
+                </div>
+                <ul class="my-navbar-center">
+                    <li class="drop">
+                        <a href="http://localhost/Aglet/product_list?gender=men" class="drop-toggle">SẢN PHẨM<i class="fa-solid fa-angle-down fa-xs"></i></a>
+                        <div class="mega-menu">
+                            <div class="my-mega-content">
+                                <div class="mega-row">
+                                    <header><a href="product_list">NỔI BẬT</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Hàng mới về</a></li>
+                                        <li><a href="product_list">Best-seller</a></li>
+                                        <li><a href="product_list">Sale-off</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">Nam </a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Hàng mới về</a></li>
+                                        <li><a href="product_list">Best-seller</a></li>
+                                        <li><a href="product_list">Sale-off</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">Nữ</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Hàng mới về</a></li>
+                                        <li><a href="product_list">Best-seller</a></li>
+                                        <li><a href="product_list">Sale-off</a></li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="drop">
+                        <a href="http://localhost/Aglet/product_list?gender=men" class="drop-toggle">NAM<i class="fa-solid fa-angle-down fa-xs"></i></a>
+                        <div class="mega-menu">
+                            <div class="my-mega-content">
+                                <div class="mega-row">
+                                    <header><a href="product_list">NỔI BẬT</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Hàng mới về</a></li>
+                                        <li><a href="product_list">Best-seller</a></li>
+                                        <li><a href="product_list">Sale-off</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">GIÀY </a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Bóng đá</a></li>
+                                        <li><a href="product_list">Chạy bộ</a></li>
+                                        <li><a href="product_list">Bóng rổ</a></li>
+                                        <li><a href="product_list">Quần vợt</a></li>
+                                        <li><a href="product_list">Slip on</a></li>
+                                        <li><a href="product_list">High top</a></li>
+                                        <li><a href="product_list">Low top</a></li>
+                                        <li><a href="product_list">Dép</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">QUẦN ÁO</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Jackets</a></li>
+                                        <li><a href="product_list">Bộ đồ thể thao</a></li>
+                                        <li><a href="product_list">Hoddie</a></li>
+                                        <li><a href="product_list">Sweater</a></li>
+                                        <li><a href="product_list">Áo thun</a></li>
+                                        <li><a href="product_list">Quần</a></li>
+                                        <li><a href="product_list">Quần bó</a></li>
+                                        <li><a href="product_list">Quần sóoc</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">PHỤ KIỆN</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Túi & Ba lô</a></li>
+                                        <li><a href="product_list">Tất</a></li>
+                                        <li><a href="product_list">Mũ </a></li>
+                                        <li><a href="product_list">Dây giày</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="line"></li>
+                    <li class="drop">
+                        <a href="http://localhost/Aglet/product_list/?gender=women" class="drop-toggle">NỮ<i class="fa-solid fa-angle-down fa-xs"></i></a>
+                        <div class="mega-menu">
+                            <div class="my-mega-content">
+                                <div class="mega-row">
+                                    <header><a href="product_list">NỔI BẬT</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Hàng mới về</a></li>
+                                        <li><a href="product_list">Best-seller</a></li>
+                                        <li><a href="product_list">Sale-off</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">GIÀY </a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Bóng đá</a></li>
+                                        <li><a href="product_list">Chạy bộ</a></li>
+                                        <li><a href="product_list">Bóng rổ</a></li>
+                                        <li><a href="product_list">Quần vợt</a></li>
+                                        <li><a href="product_list">Slip on</a></li>
+                                        <li><a href="product_list">High top</a></li>
+                                        <li><a href="product_list">Low top</a></li>
+                                        <li><a href="product_list">Dép</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">QUẦN ÁO</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Jackets</a></li>
+                                        <li><a href="product_list">Bộ đồ thể thao</a></li>
+                                        <li><a href="product_list">Hoddie</a></li>
+                                        <li><a href="product_list">Sweater</a></li>
+                                        <li><a href="product_list">Áo thun</a></li>
+                                        <li><a href="product_list">Quần</a></li>
+                                        <li><a href="product_list">Quần bó</a></li>
+                                        <li><a href="product_list">Quần sóoc</a></li>
+                                        <li><a href="product_list">Váy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-row">
+                                    <header><a href="product_list">PHỤ KIỆN</a></header>
+                                    <ul class="mega-links">
+                                        <li><a href="product_list">Túi & Ba lô</a></li>
+                                        <li><a href="product_list">Tất</a></li>
+                                        <li><a href="product_list">Mũ </a></li>
+                                        <li><a href="product_list">Dây giày</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="line"></li>
+
+                    <li class="drop">
+                        <a href="#" class="drop-toggle">GIẢM GIÁ</a>
+                    </li>
+                    <li class="line"></li>
+                    <li class="drop">
+                        <a href="http://localhost/Aglet/product_list?gender=men" class="drop-toggle">TIN TỨC</a>
+
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <div class="my-navbar-box">
+                    <div class="search-box">
+                        <input class="search-txt" type="text" name="" placeholder="Tìm kiếm">
+                        <label for="check" class="icon">
+                            <i class="fas fa-search"></i>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav>
+    @RenderBody()
+    <div id="footer">
+        <div class="find-store">
+            <div class="find-store-pic">
+                <img src="https://ananas.vn/wp-content/themes/ananas/fe-assets/images/svg/Store.svg" alt="pic">
+            </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            <div class="find-store-btn">
+                <a href="">TÌM CỬA HÀNG</a>
+            </div>
+        </div>
+        <div class="footer-items">
+            <div class="rowF">
+                <div class="colF">
+                    <a href="http://localhost/Aglet/product_list">SẢN PHẨM</a>
+                    <ul>
+                        <li><a href="#">Giày nam</a></li>
+                        <li><a href="#">Giày nữ</a></li>
+                        <li><a href="#">Thời trang & Phụ kiện</a></li>
+                        <li><a href="#">Sale-off</a></li>
+                    </ul>
+                </div>
+
+                <div class="colF">
+                    <a href="#">VỀ CÔNG TY</a>
+                    <ul>
+                        <li><a href="#">Dứa tuyển dụng</a></li>
+                        <li><a href="#">Liên hệ nhượng quyền</a></li>
+                        <li><a href="#">Về Ananas</a></li>
+                    </ul>
+                </div>
+
+                <div class="colF">
+                    <a href="#">HỖ TRỢ</a>
+                    <ul>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Bảo mật thông tin</a></li>
+                        <li><a href="#">Chính sách chung</a></li>
+                        <li><a href="#">Tra cứu đơn hàng</a></li>
+                    </ul>
+                </div>
+
+                <div class="colF">
+                    <a href="#">LIÊN HỆ</a>
+                    <ul>
+                        <li><a href="#">Email góp ý</a></li>
+                        <li><a href="#">Hotline</a></li>
+                        <li><a href="#">113</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rowF">
+                <div class="colF">
+                    <p>ANANAS SOCIAL</p>
+                    <div class="ft-icon">
+                        <i class="fa-brands ft-icon  fa-square-facebook"></i>
+                        <i class="fa-brands ft-icon fa-square-instagram"></i>
+                        <i class="fa-brands ft-icon fa-youtube"></i>
+                    </div>
+                </div>
+
+                <div class="colF">
+                    <p>ĐĂNG KÝ NHẬN MAIL</p>
+                    <form action="">
+                        <div>
+                            <input type="text" name="" id="" class="form-input">
+
+                            <button>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="colF">
+                    <a href="#">
+                        <img src="" alt="">
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="rowF">
+                <div class="colF f-r3">
+                    <img src="https://ananas.vn/wp-content/themes/ananas/fe-assets/images/icon_bocongthuong.png" alt="">
+                </div>
+
+                <div class="colF f-r3">
+                    <p>Copyright © 2022 Aglet. All rights reserved.</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</body>
 </body>
 </html>

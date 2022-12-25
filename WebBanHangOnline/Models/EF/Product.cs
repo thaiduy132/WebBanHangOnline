@@ -38,7 +38,7 @@ namespace WebBanHangOnline.Models.EF
         public string Image { get; set; }
         public int Price { get; set; }
 
-        public int PriceSale { get; set; }
+        public int? PriceSale { get; set; }
         public int Quantity { get; set; }
         public bool IsHome { get; set; }
         public bool IsSale { get; set; }
