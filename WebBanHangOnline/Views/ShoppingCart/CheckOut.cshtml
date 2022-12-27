@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Thanh toán";
+}
+<style>
+    .error {
+        color:red;
+    }
+</style>
+<body>
+    <div id="shipping-information" class="container">
+        <div style="display:none" id="show_success"></div>
+        @Html.Action("Partial_Checkout", "ShoppingCart")
+
+        @Html.Action("Partial_Items_Cart", "ShoppingCart")
+
+    </div>
+    @section scripts{
+        <script>
+            function OnFailureCO(rs) {
+                if (!rs.Success) {
+                    $('#show_success').html("Bạn đã mua hàng thất bại !! Vui lòng thử lại");
+                }
+            }
+            $(document).ready(function () {
+                $('#myForm').validate({
+                    rules: {
+                        'CustomerName': {
+                            required: true
+                        },
+                        'Phone': {
+                            required: true
+                        },
+                        'Address': {
+                            required: true
+                        },
+                        'Email': {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    messages: {
+                        'CustomerName': 'Bạn khổng để trống trường này',
+                        'Phone': 'Bạn khổng để trống trường này',
+                        'Address': 'Bạn khổng để trống trường này',
+                        'Email': 'Email chưa hợp lệ'
+                    }
+                });
+            });
+        </script>
+    }
+        
+    </body>
+

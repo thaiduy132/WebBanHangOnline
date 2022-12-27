@@ -16,10 +16,10 @@ namespace WebBanHangOnline.Controllers
             var items = db.Products.ToList();
             return View(items);
         }
-        public ActionResult GetProductsByCategory(int cateId)
+        public ActionResult Detail(int id)
         {
-            var items = db.Products.Where(x => x.ProductCategoryId == cateId).ToList();
-            return View(items);
+            var item = db.Products.Find(id);
+            return View(item);
         }
 
     }

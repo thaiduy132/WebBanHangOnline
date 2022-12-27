@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d822126298.js" crossorigin="anonymous"></script>
-
-    <title>Document</title> 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title>Document</title>
 
 </head>
 <body>
@@ -19,7 +20,16 @@
                 <li><a href="#"><i class="fa-solid fa-location-dot"></i> Tìm cửa hàng </a> </li>
                 <li><a href="#"><i class="fa-solid fa-heart"></i> Yêu thích</a> </li>
                 <li><a href="http://localhost/Aglet/login"> <i class="fa-solid fa-user"></i> Đăng nhập</a> </li>
-                <li><a href="http://localhost/Aglet/cart"><i class="fa-solid fa-bag-shopping"></i> Giỏ hàng</a> </li>
+                <li>
+                    <a href="/shoppingcart">
+                        <i class="fa-solid fa-bag-shopping"></i> Giỏ hàng
+                        <span>(</span>
+
+                        <span id="checkout_items">0</span>
+                        <span>)</span>
+
+                    </a>
+                </li>
             </ul>
             <div class="my-navbar">
                 <div class="my-navbar-logo" title="Aglet Home">
@@ -280,6 +290,13 @@
         </div>
         <div class="clear"></div>
     </div>
-</body>
+
+    <script src="~/Scripts/jsShopping.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
 </body>
 </html>

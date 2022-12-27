@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+
+<div class="bill_container">
+    <ul class="bill">
+        <li class="group_title">ĐƠN HÀNG</li>
+        <li class="divider"></li>
+        <li class="group_item">
+            @{
+                var TotalPrice = 0;
+            }
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    TotalPrice += item.TotalPrice;
+                    <span>@item.ProductName</span>
+                    <span>x</span>
+                    <span>@item.Quantity</span>
+                    <span>@item.TotalPrice.ToString() VNĐ</span>
+                }
+            }
+        </li>
+        <li class="divider-dashed"></li>
+        <li class="group_item total">
+            <span>TỔNG CỘNG</span>
+            <span id="price">@TotalPrice VNĐ</span>
+        </li>
+        <li class="group_item">
+            <input type="submit" value="HOÀN TẤT ĐẶT HÀNG" class="submitBtn">
+        </li>
+    </ul>
+
+</div>
