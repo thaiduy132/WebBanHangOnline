@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
+    [Authorize]
+
     public class HomeController : Controller
     {
         // GET: Admin/Home

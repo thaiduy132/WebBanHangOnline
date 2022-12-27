@@ -56,6 +56,7 @@ namespace WebBanHangOnline.Controllers
             {
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if(cart != null)
+
                 {
                     Order order = new Order();
                     order.CustomerName = req.CustomerName;
