@@ -30,6 +30,7 @@ namespace WebBanHangOnline.Models.EF
         public int TotalAmount { get; set; }
         public int Quantity { get; set; }
         public string Email { get; set; }
+        public int Status { get; set; }
 
         public int TypePayment { get; set; }
 

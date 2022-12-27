@@ -7,5 +7,10 @@ namespace WebBanHangOnline.Common
 {
     public class Common
     {
+        public string formatVND(int money)
+        {
+           
+            return money.ToString("#,##0");
+        }
     }
 }
