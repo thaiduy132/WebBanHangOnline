@@ -77,6 +77,37 @@ namespace WebBanHangOnline.Controllers
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
                     db.Orders.Add(order);
                     db.SaveChanges();
+                    //Send Email 
+                    var strSanPham = "";
+                    var thanhtien = 0;
+                    var TongTien = 0;
+                    foreach(var sp in cart.Items)
+                    {
+                        strSanPham += "<tr>";
+                        strSanPham += "<td>"+sp.ProductName +"</td>";
+                        strSanPham += "<td>" + sp.Quantity + "</td>";
+                        strSanPham += "<td>" + sp.TotalPrice+ "</td>";
+
+                        strSanPham += "</tr>";
+                        thanhtien += sp.Price * sp.Quantity;
+                    }
+                    TongTien = thanhtien;
+                    string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/mail/send2.html"));
+                    contentCustomer = contentCustomer.Replace("{{MaDon}}", order.Code);
+                    contentCustomer = contentCustomer.Replace("{{SanPham}}", strSanPham);
+                    contentCustomer = contentCustomer.Replace("{{NgayDat}}", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                    contentCustomer = contentCustomer.Replace("{{ThanhTien}}", thanhtien.ToString());
+                    contentCustomer = contentCustomer.Replace("{{TongTien}}", TongTien.ToString());
+                    contentCustomer = contentCustomer.Replace("{{TenKH}}", order.CustomerName);
+                    contentCustomer = contentCustomer.Replace("{{SoDienThoai}}", order.Phone);
+                    contentCustomer = contentCustomer.Replace("{{DiaChiNhanHang}}", order.Address);
+
+                    contentCustomer = contentCustomer.Replace("{{Email}}", req.Email);
+
+                    WebBanHangOnline.Models.Common.SendEmail.sendEmail("AgletShop", "Đơn hàng#" + order.Code, contentCustomer.ToString(), req.Email);
+
+                    cart.ClearCart();
                     return RedirectToAction("CheckOutSuccess");
                 }
             }

@@ -199,6 +199,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
     <Compile Include="Models\Common\Filter.cs" />
+    <Compile Include="Models\Common\SendEmail.cs" />
     <Compile Include="Models\EF\Adv.cs" />
     <Compile Include="Models\EF\Category.cs" />
     <Compile Include="Models\EF\Contact.cs" />
@@ -3030,6 +3031,8 @@
     <Content Include="Content\client\Layout\img\logo.png" />
     <Content Include="Content\client\Layout\img\quanvot.jpg" />
     <Content Include="Content\client\Layout\img\truck.png" />
+    <Content Include="Content\mail\send1.html" />
+    <Content Include="Content\mail\send2.html" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
