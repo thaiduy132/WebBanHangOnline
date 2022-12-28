@@ -14,16 +14,31 @@ namespace WebBanHangOnline.Models
         }
         public void AddToCart(ShoppingCartItem item , int quantity)
         {
+            // Lấy item truyền vào
             var checkExist = Items.FirstOrDefault(x => x.ProductId == item.ProductId);
+            // Nếu tốn tài item => Update số lượng , tổng giá
             if(checkExist != null)
             {
                 checkExist.Quantity += quantity;
                 checkExist.TotalPrice = checkExist.Price * checkExist.Quantity;
             }
+            //Nếu không tồn tại => Thêm mới item
             else
             {
                 Items.Add(item);
             }
+
+        }
+        public void Decrease(ShoppingCartItem item, int quantity)
+        {
+            var checkExist = Items.FirstOrDefault(x => x.ProductId == item.ProductId);
+            if (checkExist != null)
+            {
+                //Số lượng sp trong cart hiện tại - số lượng được thêm vào
+                checkExist.Quantity -= quantity;
+                checkExist.TotalPrice = checkExist.Price * checkExist.Quantity;
+            }
+            
 
         }
         public void Remove(int id)

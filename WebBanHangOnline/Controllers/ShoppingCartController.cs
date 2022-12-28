@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using WebBanHangOnline.Models;
 using WebBanHangOnline.Models.EF;
@@ -126,14 +128,17 @@ namespace WebBanHangOnline.Controllers
             return Json(new { count = 0 },JsonRequestBehavior.AllowGet);    
         }
         [HttpPost]
-        public ActionResult AddToCart(int id, int quantity)
+        public async Task<ActionResult> AddToCart(int id, int quantity)
         {
-            var code = new { success = false, msg = "", code = -1 ,count = 0};
+            var code = new { success = false, msg = "Số lượng trong kho không đủ !!", code = -1 ,count = 0};
             var db = new ApplicationDbContext();
+            Product product = await db.Products.FindAsync(id);
+            var productQuantity = product.Quantity;
             var checkProduct = db.Products.FirstOrDefault(x => x.Id == id); 
             if(checkProduct != null)
             {
                 ShoppingCart cart = (ShoppingCart)Session["cart"];
+                
                 if(cart == null)
                 {
                     cart = new ShoppingCart();
@@ -146,6 +151,14 @@ namespace WebBanHangOnline.Controllers
                     Quantity = quantity
 
                 };
+                // TH1 : Sản phẩm chưa có trong giỏ hàng 
+                // Nếu số lượng add > số lượng trong kho => false 
+                // Nếu số lượng trong cart hiện tại > số lượng trong kho => false
+                if(quantity > productQuantity)
+                {
+                    return Json(code);
+                }
+                // Nếu sản p
                 item.Price = checkProduct.Price;
                 if (checkProduct.PriceSale > 0)
                 {
@@ -157,8 +170,21 @@ namespace WebBanHangOnline.Controllers
                 }
                 item.TotalPrice = item.Quantity * item.Price;
                 cart.AddToCart(item, quantity);
-                Session["Cart"] = cart;
-                code = new { success = true, msg = "Successful Adding Item to Cart", code = 1 ,count = cart.Items.Count};
+
+                //Số lượng của sản phẩm trong cart hiện tại 
+
+                var productQuantityCart = cart.Items.FirstOrDefault(x => x.ProductId == id).Quantity;
+
+                //Nếu số lượng sp add thêm vào cart <= sl kho nhưng số lượng trong cart > số lượng kho => false
+                //Update lại số lượng trong cart về số lượng cũ
+                if (quantity <= productQuantity && productQuantityCart > productQuantity)
+                {
+                    cart.Decrease(item, quantity);
+                    return Json(code);
+                }
+
+                    Session["Cart"] = cart;
+                code = new { success = true, msg = "Thêm sản phẩm thành công", code = 1 ,count = cart.Items.Count};
 
             }
             return Json(code);
@@ -166,10 +192,34 @@ namespace WebBanHangOnline.Controllers
         [HttpPost]
         public ActionResult Update(int id,int quantity)
         {
+            var db = new ApplicationDbContext();
+            Product product =  db.Products.Find(id);
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            // Sản phẩm được update
+            var UpdatedItem = cart.Items.SingleOrDefault(x => x.ProductId == id);
+            // Số lượng sản phẩm trong kho hiện tại
+            var productQuantity = product.Quantity;
+            // Số lượng sản phẩm trong cart hiện tại (SL cũ)
+            var productQuantityCart = cart.Items.FirstOrDefault(x => x.ProductId == id).Quantity;
             if (cart != null)
             {
+                //Cập nhật lại số lượng
                 cart.UpdateQuantity(id, quantity);
+                // Số lượng mới 
+                var UpdatedQuantityCart = cart.Items.FirstOrDefault(x => x.ProductId == id).Quantity;
+                //Số lượng sản phẩm đã được thêm vào  = SL mới - SL cũ 
+                var AddedQuantity = UpdatedQuantityCart - productQuantityCart;
+
+                // Nếu số lượng trong kho bé hơn số lượng sp trong cart
+                if (productQuantity < UpdatedQuantityCart)
+                {
+                    // Set số lượng sản phẩm trong cart về SL cũ 
+                    cart.Decrease(UpdatedItem, AddedQuantity);
+                    return Json(new { success = false });
+                }
+                // Nếu số lượng trong cart > số lượng trong kho 
+                // Set lại số lượng cũ 
+
                 return Json(new { success = true });
 
             }
