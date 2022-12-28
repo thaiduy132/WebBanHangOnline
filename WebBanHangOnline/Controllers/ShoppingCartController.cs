@@ -53,6 +53,7 @@ namespace WebBanHangOnline.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CheckOut(OrderViewModel req)
         {
+
             var code = new { success = false, code = -1 };
             if (ModelState.IsValid)
             {
@@ -71,6 +72,12 @@ namespace WebBanHangOnline.Controllers
                         Price = x.Price,
 
                     }));
+                    foreach(var item in cart.Items) 
+                    {
+                        Product product = db.Products.Find(item.ProductId);
+                        product.Quantity -= item.Quantity;
+                        db.SaveChanges();
+                    }
                     order.TotalAmount = cart.Items.Sum(x => (x.Price * x.Quantity));
                     order.TypePayment = req.TypePayment;
                     order.CreatedDate = DateTime.Now;
