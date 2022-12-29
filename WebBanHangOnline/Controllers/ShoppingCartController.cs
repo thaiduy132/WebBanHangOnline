@@ -100,6 +100,7 @@ namespace WebBanHangOnline.Controllers
                     order.Email = req.Email;
                     Random rd = new Random();
                     order.Code = "DH" + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9) + rd.Next(0, 9);
+                    ViewBag.Code = order.Code;
                     db.Orders.Add(order);
                     db.SaveChanges();
                     //Send Email 
@@ -133,7 +134,7 @@ namespace WebBanHangOnline.Controllers
                     WebBanHangOnline.Models.Common.SendEmail.sendEmail("AgletShop", "Đơn hàng#" + order.Code, contentCustomer.ToString(), req.Email);
 
                     cart.ClearCart();
-                    return RedirectToAction("CheckOutSuccess");
+                    return RedirectToAction("GetOrder", "OrderTracker", new { @searchString = ViewBag.Code });
                 }
             }
             return Json(code);

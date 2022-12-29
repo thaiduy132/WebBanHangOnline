@@ -16,10 +16,18 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            List<Product> products = db.Products.ToList();
-            List<OrderDetail> orderDetails = db.OrderDetails.ToList();
-            List<Order> orders = db.Orders.ToList();
+            var productItems = from p in db.Products
+                               join od in db.OrderDetails on p.Id equals od.ProductId
+                               join o in db.Orders on od.OrderId equals o.Id
+                               where o.Status == -1
+                               select new 
+                               {
+                                   p.Id,
+                                   od.OrderId,
+                                   od.Quantity
+                               };
 
+            ViewBag.Products = productItems;
 
             return View();
         }
