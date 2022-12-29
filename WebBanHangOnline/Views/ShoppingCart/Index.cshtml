@@ -37,16 +37,16 @@
                                             </h4>
                                             <div class="row bottom">
                                                 <div class="center" style="margin-left:-10px">
-                                                    <div class="input-group" style="width:30%;display: inline-flex;">
+                                                    <div class="input-group" style="width:100%;display: inline-flex;background-color:white;border-radius:18px; border: 1px solid grey; padding-left: 10px;">
                                                         <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-danger btn-number" style=" color: black; background-color: white; border-color: gray;" data-type="minus" data-field="quant[@item.ProductId]">
-                                                                <span class="glyphicon glyphicon-minus"> - </span>
+                                                            <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant[@item.ProductId]" style="width:auto; margin: 0; border:none;cursor:pointer;background-color:white;">
+                                                                <span style ="font-size:25px;color:black; "class="glyphicon glyphicon-minus"> - </span>
                                                             </button>
                                                         </span>
-                                                        <input type="text" name="quant[@item.ProductId]" class="form-control input-number" id="Quantity_@item.ProductId" value="@item.Quantity" min="1" max="100" style="text-align: center; border-color: gray;">
-                                                        <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-success btn-number" style=" color: black; background-color: white; border-color: gray;" data-type="plus" data-field="quant[@item.ProductId]">
-                                                                <span class="glyphicon glyphicon-plus"> + </span>
+                                                        <input type="text" name="quant[@item.ProductId]" class="form-control input-number" id="Quantity_@item.ProductId" value="@item.Quantity" min="1" max="100" style="font-size: 20px; text-align: center; width: 70px; margin: 0; border-top: none; border-bottom: none; border-left: 1px solid grey; border-right: 1px solid grey; ">
+                                                        <span class="input-group-btn" style=" margin: 0; margin-top: 4.5px">
+                                                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant[@item.ProductId]" style="width:auto; margin: 0; border:none;cursor:pointer;background-color:white;">
+                                                                <span style="font-size:22px;color:black;" class="glyphicon glyphicon-plus"> + </span>
                                                             </button>
                                                         </span>
                                                     </div>
@@ -59,7 +59,7 @@
                                     <div class="button btnDelete" data-id="@item.ProductId">
                                         <i class="fa-solid fa-trash"></i>
                                     </div>
-                                    <div class="button btnUpdate" data-id="@item.ProductId" style=" text-align: center;  background: green; padding: 7px;">
+                                    <div class="button btnUpdate" data-id="@item.ProductId" style=" text-align: center; background: #f15e2c; padding: 7px;">
                                         <i class="fa-solid fa-refresh"></i>
                                     </div>
                                 </div>
@@ -67,7 +67,6 @@
                             <div class="divider-dashed"></div>
                         }
                     }
-                    
                 </div>
             </div>
         </div>
