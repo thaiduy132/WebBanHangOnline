@@ -22,10 +22,13 @@
     @section scripts{
         <script>
             function OnFailureCO(rs) {
-                if (!rs.Success) {
+                if (rs.Success) {
                     $('#show_success').html("Bạn đã mua hàng thất bại !! Vui lòng thử lại");
                 }
             }
+
+
+
             $(document).ready(function () {
                 $('#myForm').validate({
                     rules: {

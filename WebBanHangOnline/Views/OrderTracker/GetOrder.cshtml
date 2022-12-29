@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "GetOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@
         {
             <div class="row" id="order-status">
                 <div class="row header-row">
-                    <h3>TRẠNG THÁI ĐƠN HÀNG <span class="orange"> @Model.Code</span></h3>
+                    <h3>TRẠNG THÁI ĐƠN HÀNG<span class="orange">@Model.Code</span></h3>
                 </div>
                 <div class="row">
                     <div class="col col-fourth ">
@@ -35,13 +37,19 @@
                             <div class="progress-header">
                                 @if (@Model.Status == 0)
                                 {
-                                    <h3 class="active">ĐANG CHỜ XÁC NHẬN</h3>
+                                    <h3 class="active">ĐANG CHỜ XÁC NHẬN ĐƠN HÀNG</h3>
                                 }
-                                else
+                                else if (@Model.Status > 1)
                                 {
                                     <h3 class="active">ĐẶT HÀNG THÀNH CÔNG</h3>
                                 }
+                                @if (Model.Status == -1)
+                                {
+                                    <h3 class="active">ĐÃ HỦY ĐƠN HÀNG</h3>
+
+                                }
                             </div>
+
                             @if (@Model.CreatedDate != null)
                             {
                                 <p>
@@ -72,7 +80,7 @@
                     <div class="col col-fourth ">
                         <div class="progress">
                             @if (@Model.ShippedDate != null || @Model.Status >= 2)
-                            { 
+                            {
                                 <div class="progress-header">
                                     <h3 class="active">CHUYỂN QUA GIAO NHẬN</h3>
                                 </div>
@@ -163,18 +171,66 @@
                         </div>
                     </div>
                     <div class="col col-half hc1">
-                        <div class="media item-media">
-                            <h4 class="title">THÔNG TIN ĐƠN HÀNG</h4>
+                        <div class="media">
+                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
                             <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <div class="invoice">
-                                <div class="media-body">
-                                    <p class="text-1 bold">Hiphop Graphic Tee - Ananas Symbol - Black</p>
+                            <p class="text-1 style1">Họ tên: Nguyễn Việt Hoàng</p>
+                            <p class="text-1">Điện thoại: 0778937215</p>
+                            <p class="text-1">Email: nhoang200260@gmail.com</p>
+                            <p class="text-1">Địa chỉ: 329/17 Tân Hương</p>
+                            <p class="text-1">Phường/xã: Phường Tân Quý</p>
+                            <p class="text-1">Quận/Huyện: Quận Tân Phú</p>
+                            <p class="text-1">Thành phố/Tỉnh: Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="information">
+                <div class="shipping-information">
+                    <div class="col col-half hc1">
+                        <div class="media item-media">
+                            <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <div class="list-item">
+                                <div class="col item-picture">
+                                    <img src="https://ananas.vn/wp-content/uploads/AGT0010_1.jpg" alt="">
+                                </div>
+                                <div class="col item-information">
+                                    <p class="text-1">Hiphop Graphic Tee - Ananas Symbol - Black</p>
                                     <p class="text-1">Giá: <span class="value">365.000 VNĐ</span></p>
                                     <p class="text-1">Size: <span class="value">XL</span></p>
                                     <p class="text-1">Số lượng: <span class="value">1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-half hc1">
+                        <div class="media">
+                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <div class="invoice">
+                                <div class="media-body">
+                                    <p>
+                                        <span class="pleft">Trị giá đơn hàng:</span><span class="pright bold">
+                                            365.000
+                                            VNĐ
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Giảm giá:</span><span class="pright bold">-166.000 VNĐ</span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Phí giao hàng:</span><span class="pright bold">20.000 VNĐ</span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Phí thanh toán:</span><span class="pright bold">2.190 VNĐ</span>
+                                    </p>
                                     <div class="line"></div>
                                     <p>
-                                        <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold"> 221.190 VNĐ </span>
+                                        <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold">
+                                            221.190
+                                            VNĐ
+                                        </span>
                                     </p>
                                 </div>
                             </div>
@@ -182,35 +238,61 @@
                     </div>
                 </div>
             </div>
-        
         }
 
-        <div id="butn">
 
-            <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
-        </div>
+        @if (Model != null)
+        {
+            <div id="butn">
+                <a href="#" data-value="@Model.Id" id="cancel-order" class="btnCancel">HỦY ĐƠN</a>
+                <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
+            </div>
+        }
+
     </div>
     <script>
         $(".active").css("color", "orange");
-
-        //$("#cancel-order").click(function () {
-        //    var id = $(".getId").html();
-        //    console.log(id);
-        //    var d = new Date();
-        //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-        //    var createDate = date + ' ' + time;
-
-        //    $.ajax({
-        //        method: "POST",
-        //        url: "http://localhost/Aglet/tracking_order/cancel",
-        //        data: { id: id, date: createDate },
-        //        success: function (response) {
-        //            console.log(response);
-        //            // window.location.reload();
-        //        }
-        //    });
-        //});
+        $(document).ready(function () {
+            $('body').on('click', '.btnCancel', function (e) {
+                e.preventDefault();
+                var id = $(this).data("value");
+                console.log(id);
+                var conf = confirm("Bạn có chắc muốn hủy đơn hàng này ?");
+                if (conf) {
+                    $.ajax({
+                        url: '/ordertracker/CancelOrder',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                window.location.reload();
+                                alert("Hủy đơn hàng thành công")
+                            }
+                            else {
+                                alert("Không thể hủy đơn hàng vì đơn hàng đã hủy/bàn giao cho vận chuyển")
+                            }
+                        }
+                    })
+                }
+            })
+        })
+                //$("#cancel-order").click(function () {
+                //    var id = $(".getId").html();
+                //    console.log(id);
+                //    var d = new Date();
+                //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+                //    var createDate = date + ' ' + time;
+                //    $.ajax({
+                //        method: "POST",
+                //        url: "http://localhost/Aglet/tracking_order/cancel",
+                //        data: { id: id, date: createDate },
+                //        success: function (response) {
+                //            console.log(response);
+                //            // window.location.reload();
+                //        }
+                //    });
+                //});
     </script>
 </body>
 

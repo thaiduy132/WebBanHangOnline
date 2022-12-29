@@ -74,9 +74,23 @@ namespace WebBanHangOnline.Controllers
                     }));
                     foreach(var item in cart.Items) 
                     {
+                        // Tìm Product trong giỏ hàng
                         Product product = db.Products.Find(item.ProductId);
-                        product.Quantity -= item.Quantity;
-                        db.SaveChanges();
+                        // Kiểm tra số lượng product trong giỏ hàng với số lượng product trong db 
+                        if(product.Quantity >= item.Quantity)
+                        {
+                            product.Quantity -= item.Quantity;
+                            db.SaveChanges();
+                        }
+                        else if(product.Quantity < item.Quantity)
+                        {
+                            cart.ClearCart();
+                            return Content("<script language='javascript' type='text/javascript'>" +
+                                "alert('Đặt hàng thất bại vì trong giỏ hàng có sản phẩm không đủ số lượng');" +
+                                "window.location.replace(\"https://localhost:44308/\");" +
+                                "</script>");
+                        }
+                      
                     }
                     order.TotalAmount = cart.Items.Sum(x => (x.Price * x.Quantity));
                     order.TypePayment = req.TypePayment;
