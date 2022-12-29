@@ -504,10 +504,9 @@ div {
         flex-basis: 50%;
     }
 
-.main-cart .title-1 {
-    color: rgb(0, 0, 0);
-    background-color: #f1f1f1;
-    height: 40px;
+.main-cart .title-1 img{
+    max-height: 80px;
+    width:auto;
     /* margin: 20px 10px 20px 0px; */
     /* padding: 5px 20px 5px 20px; */
 }
@@ -551,15 +550,16 @@ div {
 #cart .media-heading {
     font-size: 25px;
     font-weight: 600;
-    margin-top: -20px;
+    margin-top: 10px;
     font-size: 25px;
     font-weight: 600;
-    margin-top: -20px;
+    font-style: italic;
 }
 
 #cart .main-cart-left .item-2 .price {
     color: #808080;
     font-size: 19px;
+    margin-top:-10px;
 }
 
 
@@ -599,6 +599,7 @@ div {
     }
 
 #cart .media-right {
+    padding-top:30px;
     width: 30%;
 }
 
@@ -610,7 +611,9 @@ div {
         font-style: italic;
         margin-right: -10px;
     }
-
+    #cart .media-body {
+        margin-top: 0px;
+    }
     #cart .media-right .button {
         /* right:0; */
         /* right:0; */
@@ -622,8 +625,11 @@ div {
         margin-top: 10px;
         cursor: pointer;
         cursor: pointer;
+        border-radius: 14px;
     }
-
+        #cart .media-right .button.btnUpdate {
+            background-image: linear-gradient(to bottom right, #F05118, #FF1111)!important;
+        }
         #cart .media-right .button .fa-trash {
             margin-top: 10px;
         }
@@ -669,7 +675,7 @@ div {
 }
 
 #cart .group_item {
-    margin: 5px 0 5px 0;
+    margin: 5px 10px 5px 0px;
 }
 
 #cart .divider {
@@ -713,7 +719,7 @@ div {
 }
 
 #cart .submitBtn {
-    background-color: orangered;
+    background-image: linear-gradient(to bottom right, #F05118, #FF1111);
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -721,6 +727,7 @@ div {
     height: 60px;
     margin-top: 10px;
     border: none;
+    border-radius: 25px;
     cursor: pointer;
 }
 
@@ -732,11 +739,12 @@ div {
 #cart .bill .promotion button {
     width: 30%;
     height: 40px;
-    background-color: orangered;
+    background-image: linear-gradient(to bottom right, #F05118, #FF1111);
     color: white;
     font-size: 20px;
     font-weight: bold;
     border: none;
+    border-radius: 16px;
     cursor: pointer;
 }
 /* END CART CSS */
@@ -1007,7 +1015,7 @@ div {
 
     .card-image .text {
         font-size: 20px;
-        background-color: var(--main-color);
+        background-image: linear-gradient(to bottom right, #F05118, #FF1111) !important;
         width: 70%;
         height: 60px;
         position: absolute;
