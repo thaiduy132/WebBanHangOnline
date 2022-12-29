@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ProductOrderODetail>
+
+<div class="col col-half hc1">
+    <div class="media item-media">
+        <h4 class="title">THÔNG TIN ĐƠN HÀNG</h4>
+        <div style=" width: 90%; margin-left:0px;" class="line"></div>
+        <div class="invoice">
+            <div class="media-body">
+
+                @{
+                    var sum = 0;
+                }
+                @if (Model != null && Model.Any())
+                 {
+
+                    foreach (var item in Model)
+                    {
+                        sum += item.Quantity * item.Price;
+                        <p class="text-1 bold">@item.Title</p>
+                        <p class="text-1">Đơn giá: <span class="value">@item.Price.ToString("#,##0") VNĐ</span></p>
+                        <p class="text-1">Số lượng: <span class="value">@item.Quantity</span></p>
+
+                    }
+                }
+
+                <div class="line"></div>
+                <p>
+                    <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold"> sum.ToString("#,##0") VNĐ </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

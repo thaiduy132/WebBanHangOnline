@@ -25,6 +25,25 @@ namespace WebBanHangOnline.Controllers
         public ActionResult GetOrder(string searchString)
         {
             var order = db.Orders.SingleOrDefault(x=>x.Code == searchString);
+            var orderItems = from od in db.OrderDetails.ToList()
+                             join o in db.Orders.ToList() on od.ProductId equals o.Id
+                             join p in db.Products.ToList() on od.ProductId equals p.Id
+                             where o.Code == searchString
+                             select new ProductOrderODetail
+                             {
+                                 Address = o.Address,
+                                 Status = o.Status,
+                                 Email = o.Email,
+                                 CustomerName = o.CustomerName,
+                                 Phone = o.Phone,
+                                 OrderId = od.OrderId,
+                                 CreatedDate = o.CreatedDate,
+                                 DeliverDate = o.DeliverDate,
+                                 ArrivedDate = o.ArrivedDate,
+                                 ShippedDate = o.ShippedDate,
+                             };
+           
+
             return View(order);
         }
         
@@ -73,7 +92,12 @@ namespace WebBanHangOnline.Controllers
             return Json(code);
         }
 
+        public ActionResult Partial_Products()
+        {
+            
+            return PartialView();
+        }
 
-        
+
     }
 }

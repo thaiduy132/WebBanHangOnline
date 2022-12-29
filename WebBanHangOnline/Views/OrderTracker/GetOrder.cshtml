@@ -29,7 +29,7 @@
         {
             <div class="row" id="order-status">
                 <div class="row header-row">
-                    <h3>TRẠNG THÁI ĐƠN HÀNG<span class="orange">@Model.Code</span></h3>
+                    <h3>TRẠNG THÁI ĐƠN HÀNG #<span class="orange">@Model.Code</span></h3>
                 </div>
                 <div class="row">
                     <div class="col col-fourth ">
@@ -161,86 +161,17 @@
                         <div class="media">
                             <h4 class="title">THÔNG TIN CÁ NHÂN</h4>
                             <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <p class="text-1 style1">Họ tên: Nguyễn Việt Hoàng</p>
-                            <p class="text-1">Điện thoại: 0778937215</p>
-                            <p class="text-1">Email: nhoang200260@gmail.com</p>
-                            <p class="text-1">Địa chỉ: 329/17 Tân Hương</p>
-                            <p class="text-1">Phường/xã: Phường Tân Quý</p>
-                            <p class="text-1">Quận/Huyện: Quận Tân Phú</p>
-                            <p class="text-1">Thành phố/Tỉnh: Hồ Chí Minh</p>
+                            <p class="text-1 style1">Họ tên: @Model.CustomerName</p>
+                            <p class="text-1">Điện thoại: @Model.Phone</p>
+                            <p class="text-1">Email: @Model.Email</p>
+                            <p class="text-1">Địa chỉ: @Model.Address</p>
                         </div>
                     </div>
-                    <div class="col col-half hc1">
-                        <div class="media">
-                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
-                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <p class="text-1 style1">Họ tên: Nguyễn Việt Hoàng</p>
-                            <p class="text-1">Điện thoại: 0778937215</p>
-                            <p class="text-1">Email: nhoang200260@gmail.com</p>
-                            <p class="text-1">Địa chỉ: 329/17 Tân Hương</p>
-                            <p class="text-1">Phường/xã: Phường Tân Quý</p>
-                            <p class="text-1">Quận/Huyện: Quận Tân Phú</p>
-                            <p class="text-1">Thành phố/Tỉnh: Hồ Chí Minh</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="information">
-                <div class="shipping-information">
-                    <div class="col col-half hc1">
-                        <div class="media item-media">
-                            <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
-                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <div class="list-item">
-                                <div class="col item-picture">
-                                    <img src="https://ananas.vn/wp-content/uploads/AGT0010_1.jpg" alt="">
-                                </div>
-                                <div class="col item-information">
-                                    <p class="text-1">Hiphop Graphic Tee - Ananas Symbol - Black</p>
-                                    <p class="text-1">Giá: <span class="value">365.000 VNĐ</span></p>
-                                    <p class="text-1">Size: <span class="value">XL</span></p>
-                                    <p class="text-1">Số lượng: <span class="value">1</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-half hc1">
-                        <div class="media">
-                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
-                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <div class="invoice">
-                                <div class="media-body">
-                                    <p>
-                                        <span class="pleft">Trị giá đơn hàng:</span><span class="pright bold">
-                                            365.000
-                                            VNĐ
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span class="pleft">Giảm giá:</span><span class="pright bold">-166.000 VNĐ</span>
-                                    </p>
-                                    <p>
-                                        <span class="pleft">Phí giao hàng:</span><span class="pright bold">20.000 VNĐ</span>
-                                    </p>
-                                    <p>
-                                        <span class="pleft">Phí thanh toán:</span><span class="pright bold">2.190 VNĐ</span>
-                                    </p>
-                                    <div class="line"></div>
-                                    <p>
-                                        <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold">
-                                            221.190
-                                            VNĐ
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @*@Html.Action("Partial_Products", "OrderTracker")*@
                 </div>
             </div>
         }
-
-
         @if (Model != null)
         {
             <div id="butn">
@@ -276,23 +207,6 @@
                 }
             })
         })
-                //$("#cancel-order").click(function () {
-                //    var id = $(".getId").html();
-                //    console.log(id);
-                //    var d = new Date();
-                //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-                //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-                //    var createDate = date + ' ' + time;
-                //    $.ajax({
-                //        method: "POST",
-                //        url: "http://localhost/Aglet/tracking_order/cancel",
-                //        data: { id: id, date: createDate },
-                //        success: function (response) {
-                //            console.log(response);
-                //            // window.location.reload();
-                //        }
-                //    });
-                //});
     </script>
 </body>
 
