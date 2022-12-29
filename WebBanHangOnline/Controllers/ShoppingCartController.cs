@@ -163,9 +163,10 @@ namespace WebBanHangOnline.Controllers
                 // Nếu số lượng trong cart hiện tại > số lượng trong kho => false
                 if(quantity > productQuantity)
                 {
+                    // false
                     return Json(code);
                 }
-                // Nếu sản p
+
                 item.Price = checkProduct.Price;
                 if (checkProduct.PriceSale > 0)
                 {
@@ -182,7 +183,7 @@ namespace WebBanHangOnline.Controllers
 
                 var productQuantityCart = cart.Items.FirstOrDefault(x => x.ProductId == id).Quantity;
 
-                //Nếu số lượng sp add thêm vào cart <= sl kho nhưng số lượng trong cart > số lượng kho => false
+                //Nếu số lượng sp add thêm vào cart <= sl kho, nhưng số lượng trong cart > số lượng kho => false
                 //Update lại số lượng trong cart về số lượng cũ
                 if (quantity <= productQuantity && productQuantityCart > productQuantity)
                 {

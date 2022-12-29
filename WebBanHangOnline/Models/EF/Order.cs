@@ -34,6 +34,12 @@ namespace WebBanHangOnline.Models.EF
 
         public int TypePayment { get; set; }
 
+        public DateTime? ShippedDate { get; set; }
+        public DateTime? DeliverDate { get; set; }
+        public DateTime? ArrivedDate { get; set; }
+        public DateTime? CancledDate { get; set; }
+
+
         public ICollection<OrderDetail> OrderDetails { get; set; }
 
 

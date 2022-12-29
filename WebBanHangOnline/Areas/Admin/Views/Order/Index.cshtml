@@ -28,7 +28,25 @@
             <h3 class="card-title">Danh sách đơn hàng</h3>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+
+            <form asp-controller="Order" asp-action="GetOrder" method="POST">
+                <select id="projectcat" name="status">
+                    <option value="0">Tất cả</option>
+                    <option value="1">Đặt thành công</option>
+                    <option value="2">Đã chuyển giao hàng</option>
+                    <option value="3">Đang vận chuyển</option>
+                    <option value="4">Đã nhận hàng</option>
+                    <option value="-1">Hủy</option>
+                </select>
+                <div class="input-group input-group-sm">
+                    <input type="text" name="searchString" />
+                    <span class="input-group-append">
+                        <button type="submit" class="btn btn-info btn-flat btnSearch">Tìm kiếm</button>
+                    </span>
+                </div>
+            </form>
+
+            <table class="table table-bordered" id="table1">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -60,7 +78,7 @@
                                     @(item.Status == -1 ? "Hủy"
                                      :item.Status == 1 ? "Đặt thành công"
                                      :item.Status == 2 ? "Đã chuyển giao hàng"
-                                     :item.Status == 3 ? "Đang vận chuyển" 
+                                     :item.Status == 3 ? "Đang vận chuyển"
                                      :item.Status == 4 ? "Đã nhận hàng" : "None" )
                                 </td>
 

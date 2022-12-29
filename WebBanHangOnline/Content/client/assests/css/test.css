@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+#tracking-order img {
+    max-width: 200px;
+    height: auto;
+}
+
+#tracking-order div {
+    display: block;
+}
+
+#tracking-order .col {
+    float: left;
+}
+
+#tracking-order .col-full {
+    width: 100%;
+}
+
+#tracking-order .col-half {
+    width: 50%;
+}
+
+#tracking-order .col-fourth {
+    width: 25%;
+}
+
+#tracking-order .orange {
+    color: #f15e2c !important;
+}
+
+#tracking-order .line {
+    margin-left: 2.5%;
+    margin-right: 2.55%;
+    width: 95%;
+    height: 2px;
+    background-color: black;
+}
+
+/*Header*/
+#tracking-order #header h1 {
+    text-align: center;
+    padding: 15px 15px;
+    padding-top: 20px;
+}
+
+/* order-status */
+#tracking-order #order-status {
+    width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    height: 250px;
+}
+
+    #tracking-order #order-status .progress {
+        width: 98%;
+    }
+
+    #tracking-order #order-status .progress-header {
+        color: white;
+        background-color: rgb(54, 52, 52);
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        padding-top: 14px;
+    }
+
+    #tracking-order #order-status .progress p {
+        padding-top: 15px;
+        font-size: 12px;
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+#tracking-order #information {
+    width: 1200px;
+    padding: 0 auto;
+    margin: 0 auto;
+    min-height: 350px;
+}
+
+    #tracking-order #information .shipping-information {
+        padding-top: 30px;
+        margin-bottom: 20px;
+    }
+
+        #tracking-order #information .shipping-information .media {
+            font-size: 16px;
+            font-style: normal;
+            padding-left: 25px;
+            padding-top: 3%;
+            background-color: #F2F2F2;
+            width: 98%;
+            max-height: 300px;
+            padding-bottom: 20px;
+        }
+
+            #tracking-order #information .shipping-information .media .title {
+                padding-bottom: 15px;
+                font-size: 18px;
+                letter-spacing: 1.5px;
+            }
+
+            #tracking-order #information .shipping-information .media .text-1 {
+                padding-top: 8px;
+                color: #555;
+            }
+
+                #tracking-order #information .shipping-information .media .text-1.style1 {
+                    padding-top: 20px;
+                }
+
+    #tracking-order #information .item-media {
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    #tracking-order #information .list-item {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+#information .shipping-information .list-item .item-picture {
+    width: 40%;
+    padding-bottom: 20px;
+}
+
+#information .shipping-information .list-item .item-information {
+    width: 55%;
+}
+
+    #information .shipping-information .list-item .item-information .text-1 {
+        font-weight: 600;
+    }
+
+    #information .shipping-information .list-item .item-information .value {
+        font-weight: 400 !important;
+    }
+
+#information .shipping-information .invoice {
+    min-height: 200px;
+}
+
+    #information .shipping-information .invoice .media-body {
+        padding-top: 20px;
+    }
+
+        #information .shipping-information .invoice .media-body p {
+            padding-bottom: 8px;
+            color: #555;
+        }
+
+        #information .shipping-information .invoice .media-body .pright {
+            float: right;
+            padding-right: 10%;
+        }
+
+        #information .shipping-information .invoice .media-body .bold {
+            font-weight: 600;
+        }
+
+        #information .shipping-information .invoice .media-body .line {
+            width: 85%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: grey;
+        }
+
+#tracking-order #butn {
+    width: 1200px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+}
+
+    #tracking-order #butn .turn-back {
+        padding: 14px 20px;
+        background-color: #f15e2c;
+        color: #F2F2F2;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    #tracking-order #butn #cancel-order {
+        padding: 12px 20px;
+        background-color: #d9d7d7;
+        border: 1px solid black;
+        font-size: 17px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+#tracking-order .passive {
+    display: none;
+}

@@ -1,0 +1,264 @@
+﻿@model WebBanHangOnline.Models.EF.Order
+
+@{
+    ViewBag.Title = "GetOrder";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/client/assests/css/test.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+    <div id="tracking-order">
+        <div style="margin-top: 50px;" class="line"></div>
+        <div id="header">
+            <h1>THÔNG TIN ĐƠN HÀNG</h1>
+        </div>
+        @if (Model != null)
+        {
+            <div class="row" id="order-status">
+                <div class="row header-row">
+                    <h3>TRẠNG THÁI ĐƠN HÀNG<span class="orange">@Model.Code</span></h3>
+                </div>
+                <div class="row">
+                    <div class="col col-fourth ">
+                        <div class="progress">
+                            <div class="progress-header">
+                                @if (@Model.Status == 0)
+                                {
+                                    <h3 class="active">ĐANG CHỜ XÁC NHẬN ĐƠN HÀNG</h3>
+                                }
+                                else
+                                {
+                                    <h3 class="active">ĐẶT HÀNG THÀNH CÔNG</h3>
+                                }
+                            </div>
+                            @if (@Model.CreatedDate != null)
+                            {
+                                <p>
+                                    @Model.CreatedDate<br><br>
+                                    Thời gian xử lý đơn hàng có thể từ 1-2 ngày làm việc. Vui lòng gọi đến hotline 0963 429 749
+                                    (trong giờ hành chính) nếu bạn muốn thay đổi thông tin đơn hàng trước khi đơn hàng của bạn
+                                    được
+                                    CHUYỂN QUA GIAO NHẬN.
+                                </p>
+                            }
+                            else if (@Model.CreatedDate == null && @Model.Status < 3)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐANG VẬN CHUYỂN</h3>
+                                </div>
+                            }
+                            else if (@Model.DeliverDate != null && @Model.Status < 3)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐANG VẬN CHUYỂN</h3>
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+                    <div class="col col-fourth ">
+                        <div class="progress">
+                            @if (@Model.ShippedDate != null || @Model.Status >= 2)
+                            { 
+                                <div class="progress-header">
+                                    <h3 class="active">CHUYỂN QUA GIAO NHẬN</h3>
+                                </div>
+                                <p>
+                                    @Model.ShippedDate<br><br>
+                                    Đơn hàng đã được chuyển sang bên vận chuyển
+                                </p>
+                            }
+                            else if (@Model.ShippedDate == null && @Model.Status < 2)
+                            {
+                                <div class="progress-header">
+                                    <h3>CHUYỂN QUA GIAO NHẬN</h3>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col col-fourth ">
+                        <div class="progress">
+                            @if (@Model.DeliverDate != null || @Model.Status >= 3)
+                            {
+                                <div class="progress-header">
+                                    <h3 class="active">ĐANG VẬN CHUYỂN</h3>
+                                </div>
+                                <p>
+                                    @Model.DeliverDate<br><br>
+                                    Đơn hàng của bạn đang được vận chuyển. Bạn sẽ nhận được hàng trong 2 - 3 ngày kể từ thời gian vận chuyển
+                                </p>
+                            }
+                            else if (@Model.DeliverDate == null && @Model.Status < 3)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐANG VẬN CHUYỂN</h3>
+                                </div>
+                            }
+                            else if (@Model.DeliverDate != null && @Model.Status < 3)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐANG VẬN CHUYỂN</h3>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col col-fourth ">
+                        <div class="progress">
+                            @if (@Model.ArrivedDate != null || @Model.Status >= 4)
+                            {
+                                <div class="progress-header">
+                                    <h3 class="active">ĐÃ NHẬN HÀNG</h3>
+                                </div>
+                                <p>
+                                    @Model.ArrivedDate<br><br>
+                                    Giao hàng thành công.
+                                </p>
+                            }
+                            else if (@Model.ShippedDate == null && @Model.Status < 4)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐÃ NHẬN HÀNG</h3>
+                                </div>
+                            }
+                            else if (@Model.ShippedDate != null && @Model.Status < 4)
+                            {
+                                <div class="progress-header">
+                                    <h3>ĐÃ NHẬN HÀNG</h3>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="information">
+                <div style=" background-color: grey;" class="line"></div>
+                <div class="shipping-information">
+                    <div class="col col-half hc1">
+                        <div class="media">
+                            <h4 class="title">THÔNG TIN CÁ NHÂN</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <p class="text-1 style1">Họ tên: Nguyễn Việt Hoàng</p>
+                            <p class="text-1">Điện thoại: 0778937215</p>
+                            <p class="text-1">Email: nhoang200260@gmail.com</p>
+                            <p class="text-1">Địa chỉ: 329/17 Tân Hương</p>
+                            <p class="text-1">Phường/xã: Phường Tân Quý</p>
+                            <p class="text-1">Quận/Huyện: Quận Tân Phú</p>
+                            <p class="text-1">Thành phố/Tỉnh: Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                    <div class="col col-half hc1">
+                        <div class="media">
+                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <p class="text-1 style1">Họ tên: Nguyễn Việt Hoàng</p>
+                            <p class="text-1">Điện thoại: 0778937215</p>
+                            <p class="text-1">Email: nhoang200260@gmail.com</p>
+                            <p class="text-1">Địa chỉ: 329/17 Tân Hương</p>
+                            <p class="text-1">Phường/xã: Phường Tân Quý</p>
+                            <p class="text-1">Quận/Huyện: Quận Tân Phú</p>
+                            <p class="text-1">Thành phố/Tỉnh: Hồ Chí Minh</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="information">
+                <div class="shipping-information">
+                    <div class="col col-half hc1">
+                        <div class="media item-media">
+                            <h4 class="title">DANH SÁCH SẢN PHẨM</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <div class="list-item">
+                                <div class="col item-picture">
+                                    <img src="https://ananas.vn/wp-content/uploads/AGT0010_1.jpg" alt="">
+                                </div>
+                                <div class="col item-information">
+                                    <p class="text-1">Hiphop Graphic Tee - Ananas Symbol - Black</p>
+                                    <p class="text-1">Giá: <span class="value">365.000 VNĐ</span></p>
+                                    <p class="text-1">Size: <span class="value">XL</span></p>
+                                    <p class="text-1">Số lượng: <span class="value">1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-half hc1">
+                        <div class="media">
+                            <h4 class="title">ĐỊA CHỈ NHẬN HÀNG</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <div class="invoice">
+                                <div class="media-body">
+                                    <p>
+                                        <span class="pleft">Trị giá đơn hàng:</span><span class="pright bold">
+                                            365.000
+                                            VNĐ
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Giảm giá:</span><span class="pright bold">-166.000 VNĐ</span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Phí giao hàng:</span><span class="pright bold">20.000 VNĐ</span>
+                                    </p>
+                                    <p>
+                                        <span class="pleft">Phí thanh toán:</span><span class="pright bold">2.190 VNĐ</span>
+                                    </p>
+                                    <div class="line"></div>
+                                    <p>
+                                        <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold">
+                                            221.190
+                                            VNĐ
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div id="butn">
+
+            <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
+        </div>
+    </div>
+    <script>
+        $(".active").css("color", "orange");
+
+        //$("#cancel-order").click(function () {
+        //    var id = $(".getId").html();
+        //    console.log(id);
+        //    var d = new Date();
+        //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+        //    var createDate = date + ' ' + time;
+
+        //    $.ajax({
+        //        method: "POST",
+        //        url: "http://localhost/Aglet/tracking_order/cancel",
+        //        data: { id: id, date: createDate },
+        //        success: function (response) {
+        //            console.log(response);
+        //            // window.location.reload();
+        //        }
+        //    });
+        //});
+    </script>
+</body>
+
+</html>

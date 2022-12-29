@@ -87,10 +87,6 @@
             display: block;
         }
 
-        #product-details .product-detail-item-info.desc {
-            font-weight: 400;
-        }
-
         #product-details .row {
             margin-left: 3px;
             margin-right: -10px;
@@ -110,21 +106,12 @@
 
         #product-details .btn-addcart {
             width: 70%;
-            background-color: black;
+            background-color: orange;
             text-align: center;
             font-size: 25px;
             padding: 1em;
             height: 90px;
-            font-weight: 600;
         }
-
-        #product-details .btn-addcart {
-            color: white;
-        }
-
-            #product-details .btn-addcart:hover {
-                color: #f15e2c;
-            }
 
         #product-details .btn-favorite {
             width: 27%;
@@ -155,9 +142,13 @@
             width: 100%;
             font-size: 25px;
             font-weight: 600;
-            background-color: #f15e2c;
+            background-color: black;
             color: white;
         }
+
+            #product-details .btn-pay:hover {
+                color: red;
+            }
 
         .product-detail-right > .accordion {
             background-color: white;
@@ -205,28 +196,6 @@
         #product-details .accordion .content-container.active .question {
             color: orange;
         }
-
-        #product-details .btn.btn-pay a {
-            color: white;
-        }
-
-        #product-details .btn.btn-pay:hover a {
-            color: black;
-        }
-
-        #product-details .item-name {
-            font-weight: 700 !important;
-        }
-
-        #product-details .col-xs-12 h3 {
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .product-detail-item-info {
-            padding-bottom: 15px;
-            padding-top: 15px;
-        }
     </style>
 </head>
 
@@ -242,14 +211,13 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-12 product-detail-right">
-                    <h3> <span class="item-name"> @Model.Title </span> </h3>
+                    <h3></h3>
                     <div class="product-detail-item-info">
                         <h6>
                             Mã sản phẩm: <span>&nbsp; <strong>@Model.ProductCode</strong> </span>
                         </h6>
                         <h6>
-                            Tình trạng: 
-                            <span>
+                            Tình trạng: <span>
                                 &nbsp;
                                 @if (Model.Quantity > 0)
                                 {
@@ -263,17 +231,49 @@
                                         Hết hàng
                                     </strong>
                                 }
+                                @*<strong>
+                                        <?php if ($rs->ttSP[0] == 1) echo 'Còn hàng';
+                                        else echo 'Hết hàng';  ?>
+                                    </strong>*@
                             </span>
                         </h6>
-                    </div> 
-                    <h3 style="justify-content: flex-start;" class="product-detail-item-info orange"> @Model.Price.ToString("#,##0") </h3>
+                    </div>
+                    <h3 class="product-detail-item-info">@Model.Price.ToString("#,##0")</h3>
                     <div class="divider"></div>
 
-                    <h6 class="product-detail-item-info desc">
+                    <h6 class="product-detail-item-info">
                         @Model.Detail
                     </h6>
                     <div class="divider"></div>
-
+                    <div class="color-picker">
+                        <ul class="nav tree">
+                            <li class="cb-color-fixed">
+                                <label data-link="">
+                                    <span class="bg-color" style="background-color: blue"></span>
+                                    <input name="cbColor" type="checkbox" value="0" hidden="" />
+                                </label>
+                            </li>
+                            <li class="cb-color-fixed">
+                                <label data-link="">
+                                    <span class="bg-color" style="background-color: red"></span>
+                                    <input name="cbColor" type="checkbox" value="0" hidden="" />
+                                </label>
+                            </li>
+                            <li class="cb-color-fixed">
+                                <label data-link="">
+                                    <span class="bg-color" style="background-color: yellow"></span>
+                                    <input name="cbColor" type="checkbox" value="0" hidden="" />
+                                </label>
+                            </li>
+                            <li class="cb-color-fixed">
+                                <label data-link="">
+                                    <span class="bg-color" style="background-color: blue"></span>
+                                    <input name="cbColor" type="checkbox" value="0" hidden="" />
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="divider"></div>
                     <div class="center">
                         <p>
                         </p><div class="input-group" style="width:30%">
