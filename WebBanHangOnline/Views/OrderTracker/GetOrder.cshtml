@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "GetOrder";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <!DOCTYPE html>
@@ -37,11 +39,17 @@
                                 {
                                     <h3 class="active">ĐANG CHỜ XÁC NHẬN ĐƠN HÀNG</h3>
                                 }
-                                else
+                                else if (@Model.Status > 1)
                                 {
                                     <h3 class="active">ĐẶT HÀNG THÀNH CÔNG</h3>
                                 }
+                                @if (Model.Status == -1)
+                                {
+                                    <h3 class="active">ĐÃ HỦY ĐƠN HÀNG</h3>
+
+                                }
                             </div>
+
                             @if (@Model.CreatedDate != null)
                             {
                                 <p>
@@ -72,7 +80,7 @@
                     <div class="col col-fourth ">
                         <div class="progress">
                             @if (@Model.ShippedDate != null || @Model.Status >= 2)
-                            { 
+                            {
                                 <div class="progress-header">
                                     <h3 class="active">CHUYỂN QUA GIAO NHẬN</h3>
                                 </div>
@@ -232,32 +240,63 @@
             </div>
         }
 
-        <div id="butn">
 
-            <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
-        </div>
+        @if (Model != null)
+        {
+            <div id="butn">
+                <a href="#" data-value="@Model.Id" id="cancel-order" class="btnCancel">HỦY ĐƠN</a>
+                <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
+            </div>
+        }
+
     </div>
     <script>
         $(".active").css("color", "orange");
+        $(document).ready(function () {
+            $('body').on('click', '.btnCancel', function (e) {
+                e.preventDefault();
+                var id = $(this).data("value");
+                console.log(id);
+                var conf = confirm("Bạn có chắc muốn hủy đơn hàng này ?");
+                if (conf) {
+                    $.ajax({
+                        url: '/ordertracker/CancelOrder',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                window.location.reload();
+                                alert("Hủy đơn hàng thành công")
+                            }
+                            else
+                            {
+                                alert("Không thể hủy đơn hàng vì đơn hàng đã hủy/bàn giao cho vận chuyển")
+                            }
+                        }
+                    })
+                }
 
-        //$("#cancel-order").click(function () {
-        //    var id = $(".getId").html();
-        //    console.log(id);
-        //    var d = new Date();
-        //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-        //    var createDate = date + ' ' + time;
+            })
+        })
 
-        //    $.ajax({
-        //        method: "POST",
-        //        url: "http://localhost/Aglet/tracking_order/cancel",
-        //        data: { id: id, date: createDate },
-        //        success: function (response) {
-        //            console.log(response);
-        //            // window.location.reload();
-        //        }
-        //    });
-        //});
+            //$("#cancel-order").click(function () {
+            //    var id = $(".getId").html();
+            //    console.log(id);
+            //    var d = new Date();
+            //    var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+            //    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+            //    var createDate = date + ' ' + time;
+
+            //    $.ajax({
+            //        method: "POST",
+            //        url: "http://localhost/Aglet/tracking_order/cancel",
+            //        data: { id: id, date: createDate },
+            //        success: function (response) {
+            //            console.log(response);
+            //            // window.location.reload();
+            //        }
+            //    });
+            //});
     </script>
 </body>
 

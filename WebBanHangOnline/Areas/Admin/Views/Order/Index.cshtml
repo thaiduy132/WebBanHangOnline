@@ -75,17 +75,29 @@
                                 <td>@item.TotalAmount.ToString("#,##0") VNĐ</td>
                                 <td>@(item.TypePayment == 1 ? "Chờ thanh toán" : "Đã thanh toán")</td>
                                 <td>
-                                    @(item.Status == -1 ? "Hủy"
-                                     :item.Status == 1 ? "Đặt thành công"
-                                     :item.Status == 2 ? "Đã chuyển giao hàng"
-                                     :item.Status == 3 ? "Đang vận chuyển"
-                                     :item.Status == 4 ? "Đã nhận hàng" : "None" )
+
+                                    @*@(item.Status == -1 ? "Hủy"
+        :item.Status == 1 ? "Đặt thành công"
+        :item.Status == 2 ? "Đã chuyển giao hàng"
+        :item.Status == 3 ? "Đang vận chuyển"
+        :item.Status == 4 ? "Đã nhận hàng" : "None" )*@
+
+                                    <a href="#" class="btn btn-sm btn-success btnUpdateTT" data-id="@item.Id">
+                                        @(item.Status == -1 ? "Hủy"
+                                        :item.Status == 1 ? "Đặt thành công"
+                                        :item.Status == 2 ? "Đã chuyển giao hàng"
+                                        :item.Status == 3 ? "Đang vận chuyển"
+                                        :item.Status == 4 ? "Đã nhận hàng" : "None")
+                                    </a>
+
                                 </td>
 
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td>
-                                    <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-success">Xem</a>
-                                    <a href="#" class="btn btn-sm btn-danger btnCapNhat" data-id="@item.Id">Cập nhật</a>
+                                    <a href="/admin/order/view/@item.Id" class="btn btn-sm btn-primary">Xem</a>
+                                    @*<a href="#" class="btn btn-sm btn-success btnCapNhat" data-id="@item.Id">Cập nhật</a>*@
+                                    <a href="#" class="btn btn-sm btn-danger btnCancel" data-id="@item.Id">Hủy đơn</a>
+
 
                                 </td>
 
@@ -118,61 +130,6 @@
 
 
 
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Cập nhật thông tin đơn hàng</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" id="txtOrderId" value="0"/>
-                <div class="form-group">
-                    <label>
-                        Thông tin thanh toán
-                    </label>
-                    <select class="form-control" id="idTrangThai">
-                        <option value="1">
-                            Chờ thanh toán
-                        </option>
-                        <option value="2">
-                            Đã thanh toán
-                        </option>
-                    </select>
-                    <label>
-                        Thông tin đơn hàng
-                    </label>
-                    <select class="form-control" id="idTrangThai2">
-                        <option value="1">
-                            Đặt thành công
-                        </option>
-                        <option value="2">
-                            Đã chuyển giao hàng
-                        </option>
-                        <option value="3">
-                            Đang vận chuyển
-                        </option>
-                        <option value="4">
-                            Đã nhận hàng
-                        </option>
-                        <option value="-1">
-                            Hủy
-                        </option>
-
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary btnLuu">Lưu</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 <!-- /.modal -->
 
 @section scripts{
@@ -183,22 +140,59 @@
                 $('#txtOrderId').val(id);
                 $('#modal-default').modal('show');
             })
-            $('body').on('click', '.btnLuu', function () {
-                var id = $('#txtOrderId').val();
-                var paystatus = $('#idTrangThai').val();
-                var orderstatus = $('#idTrangThai2').val();
+            $('body').on('click', '.btnUpdateTT', function () {
+                var id = $(this).data("id");
                 $.ajax({
                     url: '/admin/order/UpdateTT',
                     type: 'POST',
-                    data: { id: id, paystatus: paystatus, orderstatus: orderstatus },
+                    data: { id: id},
                     success: function (rs) {
                         if (rs.success) {
-                            location.reload();
+                            window.location.reload();
+                            alert("Cập nhật đơn hàng thành công ")
+                        }
+                        else {
+                            alert("Không thể cập nhật đơn hàng vì đơn hàng đã bị hủy")
                         }
                     }
                 })
 
-                $('#modal-default').modal('show');
+            })
+            //$('body').on('click', '.btnCapNhat', function () {
+            //    var id = $(this).data("id");
+            //    $('#txtOrderId').val(id);
+            //    var id = $('#txtOrderId').val();
+            //    var orderstatus = $('#idTrangThai2').val();
+            //    $.ajax({
+            //        url: '/admin/order/UpdateTT',
+            //        type: 'POST',
+            //        data: { id: id, paystatus: paystatus, orderstatus: orderstatus },
+            //        success: function (rs) {
+            //            if (rs.success) {
+            //                location.reload();
+            //            }
+            //        }
+            //    })
+            //})
+            $('body').on('click', '.btnCancel', function () {
+                var id = $(this).data("id");
+                var conf = confirm("Bạn có chắc muốn hủy đơn hàng này ?");
+                if (conf) {
+                    $.ajax({
+                        url: '/admin/order/cancel',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                window.location.reload();
+                                alert("Hủy đơn hàng thành công")
+                            } else {
+                                alert("Không thể hủy đơn hàng vì đơn hàng đã hủy/bàn giao cho vận chuyển")
+                            }
+                        }
+                    })
+                }
+                
             })
         })
     </script>    

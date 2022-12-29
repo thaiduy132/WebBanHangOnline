@@ -13,7 +13,7 @@ namespace WebBanHangOnline.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            var items = db.Products.ToList();
+            var items = db.Products.Where(x=>x.IsActive == true).ToList();
             return View(items);
         }
         public ActionResult Detail(int id)
