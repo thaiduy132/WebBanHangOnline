@@ -171,12 +171,12 @@
                         {
                             <div class="product-list card">
                                 <div class="card-image">
-                                    <img src="@item.Image" alt="">
-                                    <div class="text"><a href="/product/detail/@item.Id"> MUA NGAY</a></div>
+                                    <a href="/product/detail/@item.Id"><img src="@item.Image" alt=""></a>
+                                    <a href="/product/detail/@item.Id"><div class="text"> MUA NGAY</div></a>
                                 </div>
                                 <div class="card-descr">
-                                    <h3 class="name">@item.Title</h3>
-                                    <h3 class="color">@item.Price</h3>
+                                    <h3 class="name"><a href="/product/detail/@item.Id">@item.Title</a></h3>
+                                    <h3 class="price"> @item.Price.ToString("#,##0") VND</h3>
                                 </div>
                             </div>
                         }
