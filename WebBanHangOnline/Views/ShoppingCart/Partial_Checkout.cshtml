@@ -9,28 +9,31 @@
 }, new { @id = "myForm" }))
 {
     @Html.AntiForgeryToken()
-        <div class="form_title">THÔNG TIN GIAO HÀNG</div>
-        <input type="text" class="info" name="CustomerName" placeholder="HỌ TÊN">
-        <input type="text" class="info" name="Phone" placeholder="Số điện thoại">
-        <input type="text" class="info" name="Email" placeholder="Email">
-        <input type="text" class="info" name="Address" placeholder="Địa chỉ">
+    <div class="form_title">THÔNG TIN GIAO HÀNG</div>
+    <input type="text" class="info" name="CustomerName" placeholder="HỌ TÊN">
+    <input type="text" class="info" name="Phone" placeholder="Số điện thoại">
+    <input type="text" class="info" name="Email" placeholder="Email">
+    <input type="text" class="info" name="Address" placeholder="Địa chỉ">
 
-        <div class="form_title">PHƯƠNG THỨC GIAO HÀNG</div>
-        <div class="info-holder">
-            <input type="checkbox" checked disabled id="shippingType" class="checkBox">
-            <h4>Tốc độ tiêu chuẩn (từ 2 - 5 ngày làm việc)</h4>
-        </div>
-        <div class="form_title">PHƯƠNG THỨC THANH TOÁN</div>
-        <div class="info-holder">
-            <input type="radio" name="TypePayment" id="checkBox" checked value="1" class="checkBox">
-            <h4> Thanh toán trực tiếp khi giao hàng </h4>
-        </div>
-        <div class="info-holder">
-            <input type="radio" name="TypePayment" id="checkBox" value="2" class="checkBox" disabled>
-            <h4>Thanh toán bằng thẻ quốc tế và nội địa (ATM)</h4>
-        </div>
-        <div class="info-holder">
-            <input type="radio" name="TypePayment" id="checkBox" value="3" class="checkBox" disabled>
-            <h4>Thanh toán bằng ví MoMo</h4>
-        </div>
+    <div class="form_title">PHƯƠNG THỨC GIAO HÀNG</div>
+    <div class="info-holder">
+        <input type="checkbox" checked disabled id="shippingType" class="checkBox">
+        <h4>Tốc độ tiêu chuẩn (từ 2 - 5 ngày làm việc)</h4>
+    </div>
+    <div class="form_title">PHƯƠNG THỨC THANH TOÁN</div>
+    <div class="info-holder">
+        <input type="radio" name="TypePayment" id="checkBox" checked value="1" class="checkBox">
+        <h4> Thanh toán trực tiếp khi giao hàng </h4>
+    </div>
+    <div class="info-holder">
+        <input type="radio" name="TypePayment" id="checkBox" value="2" class="checkBox" disabled>
+        <h4>Thanh toán bằng thẻ quốc tế và nội địa (ATM)</h4>
+    </div>
+    <div class="info-holder">
+        <input type="radio" name="TypePayment" id="checkBox" value="3" class="checkBox" disabled>
+        <h4>Thanh toán bằng ví MoMo</h4>
+    </div>
+    <li class="group_item">
+        <input type="submit" value="HOÀN TẤT ĐẶT HÀNG" class="submitBtn">
+    </li>
 }
