@@ -10,16 +10,14 @@
 }
 <style>
     .error {
-        color:red;
+        color: red;
     }
 </style>
 <body>
     <div id="shipping-information" class="container">
         <div style="display:none" id="show_success"></div>
         @Html.Action("Partial_Checkout", "ShoppingCart")
-
         @Html.Action("Partial_Items_Cart", "ShoppingCart")
-
     </div>
     @section scripts{
         <script>
@@ -55,6 +53,6 @@
             });
         </script>
     }
-        
-    </body>
+
+</body>
 

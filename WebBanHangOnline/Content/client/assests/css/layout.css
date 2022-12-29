@@ -1065,9 +1065,10 @@ div {
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 90%;
     height: auto;
     display: flex;
+    padding-bottom: 50px;
 }
 
     #shipping-information .form {
@@ -1083,10 +1084,12 @@ div {
         font-weight: bold;
         font-size: 23px;
         background-color: #f1f1f1;
+        letter-spacing: 1.5px;
     }
 
 
-    #shipping-information input, select {
+    #shipping-information input,
+    select {
         display: inline-block;
         height: 35px;
         width: 80%;
@@ -1096,7 +1099,8 @@ div {
         font-size: 16px;
     }
 
-    #shipping-information #customerWard, #customerDistrict {
+    #shipping-information #customerWard,
+    #customerDistrict {
         width: 40%;
     }
 
@@ -1117,8 +1121,8 @@ div {
 
     #shipping-information .bill_container {
         margin-left: 50px;
-        width: 30%;
-        padding: 20px;
+        width: 40%;
+        padding-top: 20px;
         height: initial;
     }
 
@@ -1146,12 +1150,39 @@ div {
         margin: 20px 0 20px 0;
     }
 
+        #shipping-information .group_item h4 {
+            width: 100%;
+            margin-left: 0px;
+            display: block;
+            font-size: 18px;
+            padding-top: 10px;
+            font-weight: 600;
+            color: rgb(105, 104, 104);
+        }
+
+    #shipping-information .fee-black {
+        color: #000 !important;
+    }
+
+    #shipping-information .group_item
+    #shipping-information .group_item .item-information {
+        padding-bottom: 10px;
+    }
+
+    #shipping-information .group_item .right {
+        float: right;
+    }
+
+    #shipping-information .group_item .mid {
+        margin-left: 50%;
+    }
+
     #shipping-information .divider {
         border-bottom: 2px black solid;
     }
 
     #shipping-information .divider-dashed {
-        border-bottom: 2px black dashed;
+        border-bottom: 2px rgb(97, 97, 97) dashed;
     }
 
     #shipping-information .total {
@@ -1173,6 +1204,8 @@ div {
         width: 100%;
         height: 80px;
         border: none;
+        cursor: pointer;
     }
+
 /* END SHIPPING INFORMATION */
 

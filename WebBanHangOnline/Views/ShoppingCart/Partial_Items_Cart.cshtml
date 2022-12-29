@@ -13,17 +13,34 @@
                 foreach (var item in Model)
                 {
                     TotalPrice += item.TotalPrice;
-                    <span>@item.ProductName</span>
-                    <span>x</span>
-                    <span>@item.Quantity</span>
-                    <span>@item.TotalPrice.ToString() VNĐ</span>
+                    <div class="item-information">
+                        <h4>  @item.ProductName </h4>
+                        <h4 class="normal">Giá: <span class="right normal">  @item.TotalPrice.ToString("#,##0") VND </span></h4>
+                        <h4 class="normal">Số lượng: <span class="right normal">  @item.Quantity </span></h4>
+                    </div>
                 }
             }
         </li>
         <li class="divider-dashed"></li>
+
+        <li class="group_item fee">
+            <h4>
+                Đơn hàng <span class="right">
+                    @TotalPrice.ToString("#,##0") VNĐ
+                </span>
+            </h4>
+            <h4>Giảm <span class="right normal">0 VND</span></h4>
+            <h4 class="fee-black">Phí vận chuyển <span class="right normal">0 VND</span></h4>
+            <h4 class="fee-black">Phí thanh toán <span class="right normal">0 VND</span></h4>
+        </li>
+        <li class="divider-dashed"></li>
+
         <li class="group_item total">
             <span>TỔNG CỘNG</span>
-            <span id="price">@TotalPrice VNĐ</span>
+            <span id="price">@TotalPrice.ToString("#,##0") VNĐ</span>
+        </li>
+        <li class="group_item">
+            <input type="submit" value="HOÀN TẤT ĐẶT HÀNG" class="submitBtn">
         </li>
     </ul>
 
