@@ -730,11 +730,15 @@ div {
     border-radius: 25px;
     cursor: pointer;
 }
-
-#cart .bill .promotion input {
-    width: 60%;
-    height: 40px;
-}
+    #cart .submitBtn:hover, #cart .submitBtn:focus, #cart .submitBtn:active {
+        box-shadow: 0 0 20px rgba(0, 0, 0 ,0.5);
+        -webkit-transform: scale(1.04);
+        transform: scale(1.04);
+    }
+    #cart .bill .promotion input {
+        width: 60%;
+        height: 40px;
+    }
 
 #cart .bill .promotion button {
     width: 30%;
@@ -822,7 +826,7 @@ div {
 
     #order-tracker .form-submit {
         outline: none;
-        background-color: rgb(41, 40, 40);
+        background-image: linear-gradient(to bottom right, #F05118, #FF1111);
         margin-top: 12px;
         padding: 12px 16px;
         font-weight: 600;
@@ -835,7 +839,9 @@ div {
     }
 
         #order-tracker .form-submit:hover {
-            background-color: #f15e2c;
+            box-shadow: 0 0 20px rgba(0, 0, 0,0.5);
+            -webkit-transform: scale(1.04);
+            transform: scale(1.04);
         }
 /* END ORDER-TRACKER CSS */
 
@@ -1084,15 +1090,11 @@ div {
     }
 
     #shipping-information .form_title {
-        margin: 20px 0 20px 0;
+        margin: 20px 0 30px 0;
         width: 100%;
         height: 50px;
         color: black;
-        padding: 10px 0 0 10px;
-        font-weight: bold;
-        font-size: 23px;
-        background-color: #f1f1f1;
-        letter-spacing: 1.5px;
+        padding: 10px 0 0 0px;
     }
 
 
@@ -1205,21 +1207,25 @@ div {
     }
 
     #shipping-information .submitBtn {
-        background-color: var(--main-color);
+        background-image: linear-gradient(to bottom right, #F05118, #FF1111);
         color: white;
-        font-size: 23px;
+        font-size: 30px;
         font-weight: bold;
-        width: 100%;
+        width: 80%;
         height: 80px;
         border: none;
         cursor: pointer;
+        border:none;
+        border-radius: 50px;
     }
-
-/* END SHIPPING INFORMATION */
-
-
-/* TRACKING ORDER */
-* {
+        #shipping-information .submitBtn:hover, #shipping-information .submitBtn:focus, #shipping-information .submitBtn:active {
+            box-shadow: 0 0 20px rgba(0, 0, 0,0.5);
+            -webkit-transform: scale(1.04);
+            transform: scale(1.04);
+        }
+            /* END SHIPPING INFORMATION */
+            /* TRACKING ORDER */
+            * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;

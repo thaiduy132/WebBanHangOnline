@@ -9,18 +9,23 @@
 }, new { @id = "myForm" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form_title">THÔNG TIN GIAO HÀNG</div>
+    <div class="form_title">
+        <img height="70" src=" https://media.discordapp.net/attachments/961253752772374590/1058041903129575497/information.png?width=1440&height=253" />
+    </div>
     <input type="text" class="info" name="CustomerName" placeholder="HỌ TÊN">
     <input type="text" class="info" name="Phone" placeholder="Số điện thoại">
     <input type="text" class="info" name="Email" placeholder="Email">
     <input type="text" class="info" name="Address" placeholder="Địa chỉ">
 
-    <div class="form_title">PHƯƠNG THỨC GIAO HÀNG</div>
-    <div class="info-holder">
+    <div class="form_title">
+        <img height="70" src="https://media.discordapp.net/attachments/961253752772374590/1058041738935140393/ship.png?width=1440&height=255" />
+    </div> <div class="info-holder">
         <input type="checkbox" checked disabled id="shippingType" class="checkBox">
         <h4>Tốc độ tiêu chuẩn (từ 2 - 5 ngày làm việc)</h4>
     </div>
-    <div class="form_title">PHƯƠNG THỨC THANH TOÁN</div>
+    <div class="form_title">
+        <img height="70" src="https://media.discordapp.net/attachments/961253752772374590/1058041365533053018/pay.png?width=1440&height=254" />
+    </div> 
     <div class="info-holder">
         <input type="radio" name="TypePayment" id="checkBox" checked value="1" class="checkBox">
         <h4> Thanh toán trực tiếp khi giao hàng </h4>
