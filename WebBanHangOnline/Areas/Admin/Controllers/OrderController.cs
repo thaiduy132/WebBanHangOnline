@@ -120,6 +120,14 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             {
                 // Cập nhật lại trạng thái đơn hàng
                 order.Status = -1;
+                var items = db.OrderDetails.Where(x => x.OrderId == id).ToList();
+
+                foreach (var item in items)
+                {
+                    Product product = db.Products.Find(item.ProductId);
+                    product.Quantity += item.Quantity;
+                    db.SaveChanges();
+                }
                 db.SaveChanges();
                 code = new { success = true }; 
 

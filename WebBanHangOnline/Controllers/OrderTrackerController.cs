@@ -57,10 +57,15 @@ namespace WebBanHangOnline.Controllers
                 // Cập nhật lại trạng thái đơn hàng
                 order.Status = -1;
                 // Cập nhật lại số lượng sản phẩm của đơn hàng 
-                //foreach(var item in orderDetails)
-                //{
-                    
-                //}
+                // Lấy items 
+                var items = db.OrderDetails.Where(x => x.OrderId == id).ToList();
+
+                foreach (var item in items)
+                {
+                    Product product = db.Products.Find(item.ProductId);
+                    product.Quantity += item.Quantity;
+                    db.SaveChanges();
+                }
                 db.SaveChanges();
                 code = new { success = true };
                 return Json(code);
