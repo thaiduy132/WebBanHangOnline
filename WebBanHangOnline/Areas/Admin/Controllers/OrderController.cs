@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebBanHangOnline.Models;
 using PagedList;
 using WebBanHangOnline.Models.EF;
+using Rotativa;
 
 namespace WebBanHangOnline.Areas.Admin.Controllers
 {
@@ -134,6 +135,39 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 return Json(code);
             }
             return Json(code);
+        }
+        public ActionResult PrintPDF(int id)
+        {
+            var productitems = from p in db.Products
+                               join od in db.OrderDetails on p.Id equals od.ProductId
+                               join o in db.Orders on od.OrderId equals o.Id
+                               where o.Id == id
+                               select new ProductDetails
+                               {
+                                   OrderID = o.Id,
+                                   OrderCode = o.Code,
+                                   ArrivedDate = o.ArrivedDate,
+                                   ShippedDate = o.ShippedDate,
+                                   DeliverDate = o.DeliverDate,
+                                   CreatedDate = o.CreatedDate,
+                                   Status = o.Status,
+                                   Email = o.Email,
+                                   ProductPrice = od.Price,
+                                   TotalPrice = o.TotalAmount,
+                                   ProductName = p.Title,
+                                   ProductOrderQuantity = od.Quantity,
+                                   CustomerName = o.CustomerName,
+                                   Phone = o.Phone,
+                                   Address = o.Address
+                               };
+
+            //ViewBag.Products = productItems;
+            productitems.ToList();
+
+            return new PartialViewAsPdf("PrintPDF", productitems)
+            {
+                FileName = "HoaDon" + id.ToString() + ".pdf"
+            };
         }
     }
 }
