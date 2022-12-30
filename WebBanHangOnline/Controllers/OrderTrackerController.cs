@@ -24,27 +24,33 @@ namespace WebBanHangOnline.Controllers
 
         public ActionResult GetOrder(string searchString)
         {
-            var order = db.Orders.SingleOrDefault(x=>x.Code == searchString);
-            var orderItems = from od in db.OrderDetails.ToList()
-                             join o in db.Orders.ToList() on od.ProductId equals o.Id
-                             join p in db.Products.ToList() on od.ProductId equals p.Id
-                             where o.Code == searchString
-                             select new ProductOrderODetail
-                             {
-                                 Address = o.Address,
-                                 Status = o.Status,
-                                 Email = o.Email,
-                                 CustomerName = o.CustomerName,
-                                 Phone = o.Phone,
-                                 OrderId = od.OrderId,
-                                 CreatedDate = o.CreatedDate,
-                                 DeliverDate = o.DeliverDate,
-                                 ArrivedDate = o.ArrivedDate,
-                                 ShippedDate = o.ShippedDate,
-                             };
-           
+            var productitems = from p in db.Products
+                               join od in db.OrderDetails on p.Id equals od.ProductId
+                               join o in db.Orders on od.OrderId equals o.Id
+                               where o.Code == searchString
+                               select new ProductDetails
+                               {
+                                   OrderID = o.Id,
+                                   OrderCode = o.Code,
+                                   ArrivedDate = o.ArrivedDate,
+                                   ShippedDate = o.ShippedDate,
+                                   DeliverDate = o.DeliverDate,
+                                   CreatedDate = o.CreatedDate,
+                                   Status = o.Status,
+                                   Email = o.Email,
+                                   ProductPrice = od.Price,
+                                   TotalPrice = o.TotalAmount,
+                                   ProductName = p.Title,
+                                   ProductOrderQuantity = od.Quantity,
+                                   CustomerName = o.CustomerName,
+                                   Phone = o.Phone,
+                                   Address = o.Address
+                               };
 
-            return View(order);
+            //ViewBag.Products = productItems;
+            productitems.ToList();
+
+            return View(productitems);
         }
         
         public ActionResult CancelOrder(int id)

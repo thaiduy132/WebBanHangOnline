@@ -1,4 +1,4 @@
-﻿@model WebBanHangOnline.Models.EF.Order
+﻿﻿@model IEnumerable<WebBanHangOnline.Models.ProductDetails>
 
 @{
     ViewBag.Title = "GetOrder";
@@ -25,48 +25,48 @@
         <div id="header">
             <h1>THÔNG TIN ĐƠN HÀNG</h1>
         </div>
-        @if (Model != null)
+        @if (Model != null && Model.Any())
         {
             <div class="row" id="order-status">
                 <div class="row header-row">
-                    <h3>TRẠNG THÁI ĐƠN HÀNG #<span class="orange">@Model.Code</span></h3>
+                    <h3>TRẠNG THÁI ĐƠN HÀNG #<span class="orange">@Model.First().OrderCode</span></h3>
                 </div>
                 <div class="row">
                     <div class="col col-fourth ">
                         <div class="progress">
                             <div class="progress-header">
-                                @if (@Model.Status == 0)
+                                @if (@Model.First().Status == 0)
                                 {
                                     <h3 class="active">ĐANG CHỜ XÁC NHẬN ĐƠN HÀNG</h3>
                                 }
-                                else if (@Model.Status > 1)
+                                else if (@Model.First().Status > 1)
                                 {
                                     <h3 class="active">ĐẶT HÀNG THÀNH CÔNG</h3>
                                 }
-                                @if (Model.Status == -1)
+                                @if (@Model.First().Status == -1)
                                 {
                                     <h3 class="active">ĐÃ HỦY ĐƠN HÀNG</h3>
 
                                 }
                             </div>
 
-                            @if (@Model.CreatedDate != null)
+                            @if (@Model.First().CreatedDate != null)
                             {
                                 <p>
-                                    @Model.CreatedDate<br><br>
+                                    @Model.First().CreatedDate<br><br>
                                     Thời gian xử lý đơn hàng có thể từ 1-2 ngày làm việc. Vui lòng gọi đến hotline 0963 429 749
                                     (trong giờ hành chính) nếu bạn muốn thay đổi thông tin đơn hàng trước khi đơn hàng của bạn
                                     được
                                     CHUYỂN QUA GIAO NHẬN.
                                 </p>
                             }
-                            else if (@Model.CreatedDate == null && @Model.Status < 3)
+                            else if (@Model.First().CreatedDate == null && @Model.First().Status < 3)
                             {
                                 <div class="progress-header">
                                     <h3>ĐANG VẬN CHUYỂN</h3>
                                 </div>
                             }
-                            else if (@Model.DeliverDate != null && @Model.Status < 3)
+                            else if (@Model.First().DeliverDate != null && @Model.First().Status < 3)
                             {
                                 <div class="progress-header">
                                     <h3>ĐANG VẬN CHUYỂN</h3>
@@ -79,17 +79,17 @@
                     </div>
                     <div class="col col-fourth ">
                         <div class="progress">
-                            @if (@Model.ShippedDate != null || @Model.Status >= 2)
+                            @if (@Model.First().ShippedDate != null || @Model.First().Status >= 2)
                             {
                                 <div class="progress-header">
                                     <h3 class="active">CHUYỂN QUA GIAO NHẬN</h3>
                                 </div>
                                 <p>
-                                    @Model.ShippedDate<br><br>
+                                    @Model.First().ShippedDate<br><br>
                                     Đơn hàng đã được chuyển sang bên vận chuyển
                                 </p>
                             }
-                            else if (@Model.ShippedDate == null && @Model.Status < 2)
+                            else if (@Model.First().ShippedDate == null && @Model.First().Status < 2)
                             {
                                 <div class="progress-header">
                                     <h3>CHUYỂN QUA GIAO NHẬN</h3>
@@ -100,23 +100,23 @@
                     </div>
                     <div class="col col-fourth ">
                         <div class="progress">
-                            @if (@Model.DeliverDate != null || @Model.Status >= 3)
+                            @if (@Model.First().DeliverDate != null || @Model.First().Status >= 3)
                             {
                                 <div class="progress-header">
                                     <h3 class="active">ĐANG VẬN CHUYỂN</h3>
                                 </div>
                                 <p>
-                                    @Model.DeliverDate<br><br>
+                                    @Model.First().DeliverDate<br><br>
                                     Đơn hàng của bạn đang được vận chuyển. Bạn sẽ nhận được hàng trong 2 - 3 ngày kể từ thời gian vận chuyển
                                 </p>
                             }
-                            else if (@Model.DeliverDate == null && @Model.Status < 3)
+                            else if (@Model.First().DeliverDate == null && @Model.First().Status < 3)
                             {
                                 <div class="progress-header">
                                     <h3>ĐANG VẬN CHUYỂN</h3>
                                 </div>
                             }
-                            else if (@Model.DeliverDate != null && @Model.Status < 3)
+                            else if (@Model.First().DeliverDate != null && @Model.First().Status < 3)
                             {
                                 <div class="progress-header">
                                     <h3>ĐANG VẬN CHUYỂN</h3>
@@ -127,23 +127,23 @@
                     </div>
                     <div class="col col-fourth ">
                         <div class="progress">
-                            @if (@Model.ArrivedDate != null || @Model.Status >= 4)
+                            @if (@Model.First().ArrivedDate != null || @Model.First().Status >= 4)
                             {
                                 <div class="progress-header">
                                     <h3 class="active">ĐÃ NHẬN HÀNG</h3>
                                 </div>
                                 <p>
-                                    @Model.ArrivedDate<br><br>
+                                    @Model.First().ArrivedDate<br><br>
                                     Giao hàng thành công.
                                 </p>
                             }
-                            else if (@Model.ShippedDate == null && @Model.Status < 4)
+                            else if (@Model.First().ShippedDate == null && @Model.First().Status < 4)
                             {
                                 <div class="progress-header">
                                     <h3>ĐÃ NHẬN HÀNG</h3>
                                 </div>
                             }
-                            else if (@Model.ShippedDate != null && @Model.Status < 4)
+                            else if (@Model.First().ShippedDate != null && @Model.First().Status < 4)
                             {
                                 <div class="progress-header">
                                     <h3>ĐÃ NHẬN HÀNG</h3>
@@ -161,21 +161,51 @@
                         <div class="media">
                             <h4 class="title">THÔNG TIN CÁ NHÂN</h4>
                             <div style=" width: 90%; margin-left:0px;" class="line"></div>
-                            <p class="text-1 style1">Họ tên: @Model.CustomerName</p>
-                            <p class="text-1">Điện thoại: @Model.Phone</p>
-                            <p class="text-1">Email: @Model.Email</p>
-                            <p class="text-1">Địa chỉ: @Model.Address</p>
+                            <p class="text-1 style1">Họ tên: @Model.First().CustomerName</p>
+                            <p class="text-1">Điện thoại: @Model.First().Phone</p>
+                            <p class="text-1">Email: @Model.First().Email</p>
+                            <p class="text-1">Địa chỉ: @Model.First().Address</p>
                         </div>
                     </div>
 
-                    @*@Html.Action("Partial_Products", "OrderTracker")*@
+                    <div class="col col-half hc1">
+                        <div class="media item-media">
+                            <h4 class="title">THÔNG TIN ĐƠN HÀNG</h4>
+                            <div style=" width: 90%; margin-left:0px;" class="line"></div>
+                            <div class="invoice">
+                                <div class="media-body">
+
+                                    @if (Model != null && Model.Any())
+                                    {
+
+                                        foreach (var item in Model)
+                                        {
+                                            <p class="text-1 bold">@item.ProductName</p>
+                                            <p class="text-1">Đơn giá: <span class="value">@item.ProductPrice.ToString("#,##0") VNĐ</span></p>
+                                            <p class="text-1">Số lượng: <span class="value">@item.ProductOrderQuantity</span></p>
+
+                                        }
+                                    }
+
+                                    <div class="line"></div>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        <p>
+                                            <span class="pleft bold">Tổng thanh toán:</span><span class="pright bold"> @Model.First().TotalPrice.ToString("#,##0") VNĐ </span>
+                                        </p>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
-        @if (Model != null)
+        @if (Model != null && Model.Any())
         {
             <div id="butn">
-                <a href="#" data-value="@Model.Id" id="cancel-order" class="btnCancel">HỦY ĐƠN</a>
+                <a href="#" data-value="@Model.First().OrderID" id="cancel-order" class="btnCancel">HỦY ĐƠN</a>
                 <a href="#" class="turn-back">QUAY LẠI TRANG CHỦ</a>
             </div>
         }
