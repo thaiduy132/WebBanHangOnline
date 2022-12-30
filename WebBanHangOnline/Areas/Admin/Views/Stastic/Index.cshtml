@@ -1,17 +1,70 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <canvas id="myChart1"></canvas>
+        </div>
+        <div class="col-md-6">
+            <canvas id="myChart2"></canvas>
+        </div>
+        <div class="col-md-10">
+            <canvas id="myChart3"></canvas>
+        </div>
+    </div>
+    
+</div>
 
-<h2>Index</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>TenSp</th>
-            <th>Gia</th>
-        </tr>
-    </thead>
-    <tbody>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    </tbody>
-</table>
+<script>
+    const ctx = document.getElementById('myChart1');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'],
+            datasets: [{
+                label: 'Doanh thu trong năm 2022',
+                data: [10000000,350000000,25000000,324000000,220000000,251000000,612000000,300000000,2889000000,3000000000,1200000000,399000000],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+    const abc = document.getElementById('myChart2');
+
+    new Chart(abc, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Tỉ lệ hủy hàng',
+                'Tỉ lệ thành công',
+                
+            ],
+            datasets: [{
+                label: 'Trạng thái đơn hàng',
+                data: [20,80],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                ],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
